@@ -8,19 +8,20 @@ class APIGateway{
   *
   * @param String - GET,POST,PUT,DELETE
   * @param String - API route to be called
-  * @param Object - Data to be sent along with the request
-  * @param String - API to connect to (pinwheel, galaxy)
+  * @param Object - Data to be sent along with the request (optional)
+  * @param String - Headers, additional headers (optional)
   *
   * @example
   * <code>
-  *  $headers = array("Domain"=>"domain_1", "Authorization"=>"sometoken");
-  *  $api = new \Rhonda\APIGateway('GET','user/user_201412041437240x85341200x8460742',null,'users','domain_id','auth_token');
-  *  $data = $api->run();
+  *  $post_body = (object) array("name"=>"John", "pass"=>"doe");
+  *  $headers = array("Domain"=>"some string", "Authorization"=>"some string");
+  *  $api = new \Rhonda\APIGateway('GET','http://example.com', $post_body, $headers);
+  *  $result = $api->run();
   * </code>
   *
   * @return Return
   *
-  * @since   2015-09-22
+  * @since   2015-11-05
   * @author  Deac Karns <deac@sdicg.com> 
   **/
   function __construct($verb, $url, $data=NULL, $headers=NULL) {
@@ -37,17 +38,22 @@ class APIGateway{
   }
 
   /**
-    * Makes an HTTP request to the supplied pinwheel service
+    * Makes an HTTP request to the supplied URL
     *
     * @return  JSON - The response returned by the service
     *
-    * @since   2015-09-22
+    * @since   2015-11-05
     * @author  Deac Karns <deac@sdicg.com>
     */ 
   public function run(){
     $contents = file_get_contents($this->url, false, $this->context);
     if(!strpos($http_response_header[0], '200')){
-      throw new \Exception(json_decode($contents)->message);
+      if(property_exists($contents, 'message')){
+        $body = json_decode($contents)->message;
+      }else{
+        $body = $http_response_header;
+      }
+      throw new \Exception(implode(" - ", $body));
     }
 
     return $contents;

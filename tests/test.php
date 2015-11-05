@@ -45,10 +45,15 @@ $config->load_object('test_two', $object);
 echo json_encode($config->get('test_two'));
 echo "</br>";
 
-$headers = array("Domain"=>"domain_1", "Authorization"=>"sometoken");
-$data = (object) array("handle"=>"demo_1", "password"=>"asdf");
-$api = new \Rhonda\APIGateway('POST','http://elguapo.eventlink.local/authenticate/',$data, $headers);
-$data = $api->run();
+try{
+  $headers = array("Domain"=>"domain_1", "Authorization"=>"sometoken");
+  $data = (object) array("handle"=>"demo_1", "password"=>"asdf");
+  $api = new \Rhonda\APIGateway('POST','http://elguapo.eventlink.local/authenticateasdf/',$data, $headers);
+  $data = $api->run();
+}catch(\Exception $e){
+  $error = new \Rhonda\Error();
+  echo $error->handle($e);
+}
 
 echo $data;
 echo "</br>";
