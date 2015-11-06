@@ -1,8 +1,35 @@
 <?php
 namespace Rhonda;
 
+/**
+* Class to handle UUID related tasks
+*
+* @category  Class
+* @version   0.0.1
+* @since     2015-11-06
+* @author    Deac Karns <deac@sdicg.com>
+*/
 class UUID
 {
+    /**
+    * Create a UUID4 string
+    *
+    * @example
+    * <code>
+    *   \Rhonda\UUID::create();
+    * </code>
+    *
+    * @example
+    * <code>
+    *   $uuid = new \Rhonda\UUID();
+    *   $uuid->create();
+    * </code>
+    *
+    * @return String - UUID4 string
+    *
+    * @since   2015-11-06
+    * @author  Deac Karns <deac@sdicg.com> 
+    **/
     public static function create()
     {
       return sprintf( '%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
