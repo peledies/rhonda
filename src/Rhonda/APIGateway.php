@@ -47,7 +47,13 @@ class APIGateway{
   public function run(){
     $contents = file_get_contents($this->url, false, $this->context);
     if(!strpos($http_response_header[0], '200')){
-      throw new \Exception(json_decode($contents)->message);
+      $contents = json_decode($contents);
+      if(property_exists($contents, 'message')){
+        $body = $contents->message;
+      }else{
+        $body = implode(" - ", $http_response_header);
+      }
+      throw new \Exception($body);
     }
 
     return $contents;
