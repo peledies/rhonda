@@ -1,0 +1,216 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Rhonda by peledies</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Rhonda</h1>
+        <p class="header">A composer package that provides solutions to common PHP tasks</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/peledies/rhonda/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/peledies/rhonda/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/peledies/rhonda">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/peledies">peledies</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="help-me-rhonda" class="anchor" href="#help-me-rhonda" aria-hidden="true"><span class="octicon octicon-link"></span></a>Help me \Rhonda</h1>
+
+<p>Rhonda is a composer installable package that provides solutions to common PHP tasks.</p>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+
+<div class="highlight highlight-source-shell"><pre>  composer require peledies/rhonda:<span class="pl-k">~</span>1
+  composer install</pre></div>
+
+<h2>
+<a id="require-in-your-project" class="anchor" href="#require-in-your-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Require in your project</h2>
+
+<p>Add the folowing to your composer.json file</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-s"><span class="pl-pds">"</span>require<span class="pl-pds">"</span></span>: {</span>
+<span class="pl-s1">    <span class="pl-s"><span class="pl-pds">"</span>peledies/rhonda<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>~1<span class="pl-pds">"</span></span></span>
+<span class="pl-s1">  }</span></pre></div>
+
+<h1>
+<a id="classes-and-methods" class="anchor" href="#classes-and-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes and Methods</h1>
+
+<h2>
+<a id="rhondauuid" class="anchor" href="#rhondauuid" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\UUID</h2>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>create()</td>
+<td>Create a new UUID</td>
+</tr>
+</tbody>
+</table>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">UUID</span><span class="pl-k">::</span>create();</span></pre></div>
+
+<p>OR</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$uuid</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">UUID</span>();</span>
+<span class="pl-s1">  <span class="pl-smi">$uuid</span><span class="pl-k">-&gt;</span>create();</span></pre></div>
+
+<h2>
+<a id="rhondarequestbody" class="anchor" href="#rhondarequestbody" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\RequestBody</h2>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>get()</td>
+<td>Get the provided request body</td>
+</tr>
+</tbody>
+</table>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">RequestBody</span><span class="pl-k">::</span>get();</span></pre></div>
+
+<p>OR</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$request_body</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">RequestBody</span>();</span>
+<span class="pl-s1">  <span class="pl-smi">$request_body</span><span class="pl-k">-&gt;</span>get();</span></pre></div>
+
+<h2>
+<a id="rhondaerror" class="anchor" href="#rhondaerror" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Error</h2>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>handle()</td>
+<td>Fromat an exception for return. Also writes a pretty stack trace to the error log</td>
+</tr>
+</tbody>
+</table>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-k">try</span>{</span>
+<span class="pl-s1">    <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-c1">Exception</span>(<span class="pl-s"><span class="pl-pds">"</span>Demo Error Exception<span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1">  }<span class="pl-k">catch</span>(<span class="pl-c1">\</span><span class="pl-c1">Exception</span> <span class="pl-smi">$e</span>){</span>
+<span class="pl-s1">    <span class="pl-c1">echo</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Error</span><span class="pl-k">::</span>handle(<span class="pl-smi">$e</span>);</span>
+<span class="pl-s1">  }</span></pre></div>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-k">try</span>{</span>
+<span class="pl-s1">    <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-c1">Exception</span>(<span class="pl-s"><span class="pl-pds">"</span>Demo Error Exception<span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1">  }<span class="pl-k">catch</span>(<span class="pl-c1">\</span><span class="pl-c1">Exception</span> <span class="pl-smi">$e</span>){</span>
+<span class="pl-s1">    <span class="pl-smi">$error</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Error</span>();</span>
+<span class="pl-s1">    <span class="pl-c1">echo</span> <span class="pl-smi">$error</span><span class="pl-k">-&gt;</span>handle(<span class="pl-smi">$e</span>);</span>
+<span class="pl-s1">  }</span></pre></div>
+
+<h2>
+<a id="rhondaconfig" class="anchor" href="#rhondaconfig" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Config</h2>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>load_file()</td>
+<td>Load a JSON file into memory as an object for later retrieval</td>
+</tr>
+<tr>
+<td>load_object()</td>
+<td>Load an object into memory for later retrieval</td>
+</tr>
+<tr>
+<td>get()</td>
+<td>Retrieve a configuration object from memory</td>
+</tr>
+</tbody>
+</table>
+
+<p>Load Object to memory</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$object</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">stdClass</span>();</span>
+<span class="pl-s1">  <span class="pl-smi">$object</span><span class="pl-k">-&gt;</span><span class="pl-smi">thing_1</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>something one<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">  <span class="pl-smi">$object</span><span class="pl-k">-&gt;</span><span class="pl-smi">thing_2</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>something two<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Config</span><span class="pl-k">::</span>load_object(<span class="pl-s"><span class="pl-pds">'</span>test_one<span class="pl-pds">'</span></span>, <span class="pl-smi">$object</span>);</span></pre></div>
+
+<p>Load JSON file to memory</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c">// File path is relative to your project root</span></span>
+<span class="pl-s1">  <span class="pl-smi">$config</span><span class="pl-k">-&gt;</span>load_file(<span class="pl-s"><span class="pl-pds">'</span>test_two<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>path/to/file.json<span class="pl-pds">'</span></span>);</span></pre></div>
+
+<p>Retrieve a configuration object from memory</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">\Rhonda\</span><span class="pl-c1">Config</span><span class="pl-k">::</span>get(<span class="pl-s"><span class="pl-pds">'</span>test_one<span class="pl-pds">'</span></span>);</span></pre></div>
+
+<h2>
+<a id="rhondaapigateway" class="anchor" href="#rhondaapigateway" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\APIGateway</h2>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>run()</td>
+<td>Run a request to an external URL</td>
+</tr>
+</tbody>
+</table>
+
+<p>Make a request to an external address with custom headers and a request body</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">try</span>{</span>
+<span class="pl-s1">  <span class="pl-smi">$headers</span> <span class="pl-k">=</span> <span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">"</span>Domain<span class="pl-pds">"</span></span><span class="pl-k">=&gt;</span><span class="pl-s"><span class="pl-pds">"</span>domain_1<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>Authorization<span class="pl-pds">"</span></span><span class="pl-k">=&gt;</span><span class="pl-s"><span class="pl-pds">"</span>sometoken<span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1">  <span class="pl-smi">$data</span> <span class="pl-k">=</span> (<span class="pl-k">object</span>) <span class="pl-c1">array</span>(<span class="pl-s"><span class="pl-pds">"</span>handle<span class="pl-pds">"</span></span><span class="pl-k">=&gt;</span><span class="pl-s"><span class="pl-pds">"</span>demo_1<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>password<span class="pl-pds">"</span></span><span class="pl-k">=&gt;</span><span class="pl-s"><span class="pl-pds">"</span>asdf<span class="pl-pds">"</span></span>);</span>
+<span class="pl-s1">  <span class="pl-smi">$api</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">APIGateway</span>(<span class="pl-s"><span class="pl-pds">'</span>POST<span class="pl-pds">'</span></span>,<span class="pl-s"><span class="pl-pds">'</span>http://elguapo.eventlink.local/authenticateasdf/<span class="pl-pds">'</span></span>,<span class="pl-smi">$data</span>, <span class="pl-smi">$headers</span>);</span>
+<span class="pl-s1">  <span class="pl-smi">$data</span> <span class="pl-k">=</span> <span class="pl-smi">$api</span><span class="pl-k">-&gt;</span>run();</span>
+<span class="pl-s1">}<span class="pl-k">catch</span>(<span class="pl-c1">\</span><span class="pl-c1">Exception</span> <span class="pl-smi">$e</span>){</span>
+<span class="pl-s1">  <span class="pl-smi">$error</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Error</span>();</span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$error</span><span class="pl-k">-&gt;</span>handle(<span class="pl-smi">$e</span>);</span>
+<span class="pl-s1">}</span></pre></div>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
