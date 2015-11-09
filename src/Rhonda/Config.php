@@ -35,7 +35,8 @@ class Config {
   * @author  Deac Karns <deac@sdicg.com> 
   **/
   public function load_file($key, $location){
-    self::$config->$key = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].$location));
+    $contents = json_decode(file_get_contents($_SERVER['DOCUMENT_ROOT'].$location));
+    @self::$config->$key = $contents;
   }
 
   /**
