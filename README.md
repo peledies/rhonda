@@ -45,6 +45,20 @@ OR
 ```
 
 
+##\Rhonda\Success
+| Method  | Description |
+| ------------- | ------------- |
+| create()  | create a uniform success message   |
+```php
+  echo \Rhonda\Success:: create();
+```
+OR
+```php
+  $msg = new \Rhonda\Success();
+  echo $msg->create();
+```
+
+
 ##\Rhonda\Error
 | Method  | Description |
 | ------------- | ------------- |
@@ -56,6 +70,7 @@ OR
     echo \Rhonda\Error::handle($e);
   }
 ```
+OR
 ```php
   try{
     throw new Exception("Demo Error Exception");
