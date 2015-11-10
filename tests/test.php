@@ -60,10 +60,34 @@ try{
   $data = (object) array("handle"=>"demo_1", "password"=>"asdf");
   $api = new \Rhonda\APIGateway('POST','http://elguapo.eventlink.local/authenticateasdf/',$data, $headers);
   $data = $api->run();
+  echo $data;
 }catch(\Exception $e){
   $error = new \Rhonda\Error();
   echo $error->handle($e);
 }
 
-echo $data;
+
+echo "</br>";
+
+
+// Verify email string structure
+try{
+  // PASS
+  $string = 'test@test.com';
+  \Rhonda\String:: validate_or_error('email',$string);
+
+  // FAIL
+  $string = 'test@test';
+  \Rhonda\String:: validate_or_error('email',$string);
+
+  // Catch will be invoked
+}catch(\Exception $e){
+  echo \Rhonda\Error:: handle($e);
+}
+echo "</br>";
+
+
+// Normalize a string
+$input = 'Some TEST-@#string#-yo-#$-$#';
+echo \Rhonda\String:: normalize($input);
 echo "</br>";
