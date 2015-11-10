@@ -32,13 +32,16 @@ class String
   **/
   public static function validate($type ,$string)
   {
+    if(strlen($string) == 0){
+      throw new \Exception("String Validation Has No Content");
+    }
     switch ($type){
       case 'email':
         $result = (filter_var($string, FILTER_VALIDATE_EMAIL));
         break;
 
       case 'username':
-        $result = (preg_match("/[^a-z0-9\.\-\_]/", $string));
+        $result = !(preg_match("/[^a-z0-9\.\-\_]/", $string));
         break;
 
       default:
