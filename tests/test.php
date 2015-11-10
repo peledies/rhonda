@@ -2,6 +2,7 @@
 
 require_once __DIR__ . '/../vendor/autoload.php'; // Autoload files using Composer autoload
 
+// Create a new UUID
 echo \Rhonda\UUID::create();
 echo "</br>";
 
@@ -9,6 +10,8 @@ $uuid = new \Rhonda\UUID();
 echo $uuid->create();
 echo "</br>";
 
+
+// Retrieve a provided request body
 echo json_encode(\Rhonda\RequestBody::get());
 echo "</br>";
 
@@ -16,6 +19,8 @@ $request_body = new \Rhonda\RequestBody();
 echo json_encode($request_body->get());
 echo "</br>";
 
+
+// Format an exception the error log and for return
 try{
   throw new Exception("Demo Error Exception");
 }catch(\Exception $e){
@@ -31,11 +36,14 @@ try{
 }
 echo "</br>";
 
+
+// Load an object into memory for later retrieval
 $object = new stdClass();
 $object->thing_1 = 'something one';
 $object->thing_2 = 'something two';
 \Rhonda\Config::load_object('test_one', $object);
 
+// Retrieve a configuration object from memory
 echo json_encode(\Rhonda\Config::get('test_one'));
 echo "</br>";
 
@@ -45,18 +53,17 @@ $config->load_object('test_two', $object);
 echo json_encode($config->get('test_two'));
 echo "</br>";
 
-$headers = array("Domain"=>"domain_1", "Authorization"=>"sometoken");
-$data = (object) array("handle"=>"demo_1", "password"=>"asdf");
-$api = new \Rhonda\APIGateway('POST','http://elguapo.eventlink.local/authenticate/',$data, $headers);
-$data = $api->run();
 
-echo $data;
-echo "</br>";
-
+// Make a request to an external address with custom headers and a request body
 try{
-  $SDI = new \Rhonda\SDI();
-  $SDI->verify_permissions('calendar_list');
+  $headers = array("Domain"=>"domain_1", "Authorization"=>"sometoken");
+  $data = (object) array("handle"=>"demo_1", "password"=>"asdf");
+  $api = new \Rhonda\APIGateway('POST','http://elguapo.eventlink.local/authenticateasdf/',$data, $headers);
+  $data = $api->run();
 }catch(\Exception $e){
   $error = new \Rhonda\Error();
   echo $error->handle($e);
 }
+
+echo $data;
+echo "</br>";

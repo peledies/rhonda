@@ -1,6 +1,14 @@
 <?php
 namespace Rhonda;
 
+/**
+* Class to handle APIGateway related tasks
+*
+* @category  Class
+* @version   0.0.1
+* @since     2015-11-06
+* @author    Deac Karns <deac@sdicg.com>
+*/
 class APIGateway{
 
   /**
@@ -8,19 +16,18 @@ class APIGateway{
   *
   * @param String - GET,POST,PUT,DELETE
   * @param String - API route to be called
-  * @param Object - Data to be sent along with the request
-  * @param String - API to connect to (pinwheel, galaxy)
+  * @param Object - Data to be sent along with the request  - (optional)
+  * @param Array  - Custom additional headers               - (optional)
   *
   * @example
   * <code>
-  *  $headers = array("Domain"=>"domain_1", "Authorization"=>"sometoken");
-  *  $api = new \Rhonda\APIGateway('GET','user/user_201412041437240x85341200x8460742',null,'users','domain_id','auth_token');
-  *  $data = $api->run();
+  *  $post_body = (object) array("name"=>"John", "pass"=>"doe");
+  *  $headers = array("Domain"=>"some string", "Authorization"=>"some string");
+  *  $api = new \Rhonda\APIGateway('GET','http://example.com', $post_body, $headers);
+  *  $result = $api->run();
   * </code>
   *
-  * @return Return
-  *
-  * @since   2015-09-22
+  * @since   2015-11-05
   * @author  Deac Karns <deac@sdicg.com> 
   **/
   function __construct($verb, $url, $data=NULL, $headers=NULL) {
@@ -32,18 +39,14 @@ class APIGateway{
     $this->makeContext();
   }
 
-  function __destruct() {
-     //echo "kaboom!";
-  }
-
   /**
-    * Makes an HTTP request to the supplied pinwheel service
-    *
-    * @return  JSON - The response returned by the service
-    *
-    * @since   2015-09-22
-    * @author  Deac Karns <deac@sdicg.com>
-    */ 
+  * Makes an HTTP request to the provided URL
+  *
+  * @return  String - The response returned by the service
+  *
+  * @since   2015-11-05
+  * @author  Deac Karns <deac@sdicg.com>
+  */ 
   public function run(){
     $contents = file_get_contents($this->url, false, $this->context);
     if(!strpos($http_response_header[0], '200')){
@@ -60,14 +63,13 @@ class APIGateway{
   }
 
   /**
-    * Creates a resource containing HTTP request information 
-    *
-    * @return  Resource - Contains HTTP request information based on the supplied parameters
-    *
-    * @since   2015-09-22
-    * @author  Deac Karns <deac@sdicg.com>
-    * @todo    only use domain and auth token if they are provided
-    */ 
+  * Creates a resource containing HTTP request information 
+  *
+  * @return  Resource - Contains HTTP request information based on the provided parameters
+  *
+  * @since   2015-11-06
+  * @author  Deac Karns <deac@sdicg.com>
+  */ 
   private function makeContext(){
     // make headers string
     $headers = NULL;
