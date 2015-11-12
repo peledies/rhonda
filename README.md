@@ -124,7 +124,7 @@ try{
 }
 ```
 
-##\Rhonda\String
+##\Rhonda\Strings
 | Method  | Description |
 | ------------- | ------------- |
 | **verify(** *type_string, test_string* **)**  | Return True/False  |
@@ -150,11 +150,11 @@ try{
 try{
   // PASS
   $string = 'test@test.com';
-  \Rhonda\String:: validate('email',$string);
+  \Rhonda\Strings:: validate('email',$string);
 
   // FAIL
   $string = 'test@test';
-  \Rhonda\String:: validate('email',$string);
+  \Rhonda\Strings:: validate('email',$string);
 
   // Catch will not be invoked
 }catch(\Exception $e){
@@ -167,11 +167,11 @@ try{
 try{
   // PASS
   $string = 'test@test.com';
-  \Rhonda\String:: validate_or_error('email',$string);
+  \Rhonda\Strings:: validate_or_error('email',$string);
 
   // FAIL
   $string = 'test@test';
-  \Rhonda\String:: validate_or_error('email',$string);
+  \Rhonda\Strings:: validate_or_error('email',$string);
 
   // Catch will be invoked
 }catch(\Exception $e){
@@ -182,7 +182,7 @@ try{
 **Normalize a string**
 ```php
   $input = 'Some TEST-@#string-#$-!@';
-  \Rhonda\String:: normalize($input);
+  \Rhonda\Strings:: normalize($input);
 
   // Returns
   some_test_string

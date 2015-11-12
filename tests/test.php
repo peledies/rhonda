@@ -74,11 +74,11 @@ echo "</br>";
 try{
   // PASS
   $string = 'test@test.com';
-  \Rhonda\String:: validate_or_error('email',$string);
+  \Rhonda\Strings:: validate_or_error('email',$string);
 
   // FAIL
   $string = 'test@test';
-  \Rhonda\String:: validate_or_error('email',$string);
+  \Rhonda\Strings:: validate_or_error('email',$string);
 
   // Catch will be invoked
 }catch(\Exception $e){
@@ -89,5 +89,5 @@ echo "</br>";
 
 // Normalize a string
 $input = 'Some TEST-@#string#-yo-#$-$#';
-echo \Rhonda\String:: normalize($input);
+echo \Rhonda\Strings:: normalize($input);
 echo "</br>";

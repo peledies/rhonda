@@ -9,19 +9,19 @@ namespace Rhonda;
 * @since     2015-11-10
 * @author    Deac Karns <deac@sdicg.com>
 */
-class String
+class Strings
 {
   /**
   * Validate a string as a valid 'type' string
   * 
   * @example
   * <code>
-  *   \Rhonda\String:: validate('email', 'test@test.com'));
+  *   \Rhonda\Strings:: validate('email', 'test@test.com'));
   * </code>
   *
   * @example
   * <code>
-  *   $tmp = new \Rhonda\String();
+  *   $tmp = new \Rhonda\Strings();
   *   $tmp->validate('email', 'test@test.com');
   * </code>
   * @return Boolean - True / False
@@ -56,12 +56,12 @@ class String
   * 
   * @example
   * <code>
-  *   \Rhonda\String:: validate_or_error('email', 'test@test.com'));
+  *   \Rhonda\Strings:: validate_or_error('email', 'test@test.com'));
   * </code>
   *
   * @example
   * <code>
-  *   $tmp = new \Rhonda\String();
+  *   $tmp = new \Rhonda\Strings();
   *   $tmp->validate_or_error('email', 'test@test.com');
   * </code>
   * @return Boolean - True or throws an exception
@@ -83,7 +83,7 @@ class String
   * 
   * @example
   * <code>
-  *   \Rhonda\String:: normalize('Some TEST-@#string#-yo-#$-$#');
+  *   \Rhonda\Strings:: normalize('Some TEST-@#string#-yo-#$-$#');
   *
   *   // Returns
   *   some_test_string_yo
