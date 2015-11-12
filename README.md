@@ -124,3 +124,66 @@ try{
 }
 ```
 
+##\Rhonda\String
+| Method  | Description |
+| ------------- | ------------- |
+| **verify(** *type_string, test_string* **)**  | Return True/False  |
+| **verify_or_error(** *type_string, test_string* **)** | Return True/False or throws exception |
+| **normalize(** *string* **)** | Returns normalized string |
+
+#### String Normalization
+ * Removes non word characters
+ * Converts the string to lowercse
+ * Converts spaces and dashes to underscores
+ * Trims trailing invalid characters
+
+#### Verification Types
+
+| Type  | Description |
+| ------------- | ------------- |
+| 'email'  | Verifies proper email structure  |
+| 'username' | Tests that string only includes a-z 0-9 . - or _ |
+
+
+**Test that a string is a valid email (without exception)**
+```php
+try{
+  // PASS
+  $string = 'test@test.com';
+  \Rhonda\String:: validate('email',$string);
+
+  // FAIL
+  $string = 'test@test';
+  \Rhonda\String:: validate('email',$string);
+
+  // Catch will not be invoked
+}catch(\Exception $e){
+  echo \Rhonda\Error:: handle($e);
+}
+```
+
+**Test that a string is a valid email (with exception)**
+```php
+try{
+  // PASS
+  $string = 'test@test.com';
+  \Rhonda\String:: validate_or_error('email',$string);
+
+  // FAIL
+  $string = 'test@test';
+  \Rhonda\String:: validate_or_error('email',$string);
+
+  // Catch will be invoked
+}catch(\Exception $e){
+  echo \Rhonda\Error:: handle($e);
+}
+```
+
+**Normalize a string**
+```php
+  $input = 'Some TEST-@#string-#$-!@';
+  \Rhonda\String:: normalize($input);
+
+  // Returns
+  some_test_string
+```
