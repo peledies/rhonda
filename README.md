@@ -187,3 +187,21 @@ try{
   // Returns
   some_test_string
 ```
+
+##\Rhonda\Headers
+| Method  | Description |
+| ------------- | ------------- |
+| getallheaders()  | Return an Array of all request headers, works for Apache, PHP, and Nginx servers  |
+
+
+Retrieve All request headers as an Array
+```php
+  $headers = \Rhonda\Headers:: getallheaders();
+}
+```
+OR
+```php
+  $headers = new \Rhonda\Headers();
+  $headers->getallheaders();
+}
+```

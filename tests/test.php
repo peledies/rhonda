@@ -91,3 +91,7 @@ echo "</br>";
 $input = 'Some TEST-@#string#-yo-#$-$#';
 echo \Rhonda\Strings:: normalize($input);
 echo "</br>";
+
+
+// Get all request headers
+print_r( \Rhonda\Headers:: getallheaders() );
