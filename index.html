@@ -104,6 +104,31 @@
 <span class="pl-s1">  <span class="pl-smi">$request_body</span><span class="pl-k">-&gt;</span>get();</span></pre></div>
 
 <h2>
+<a id="rhondasuccess" class="anchor" href="#rhondasuccess" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Success</h2>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>create()</td>
+<td>create a uniform success message</td>
+</tr>
+</tbody>
+</table>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Success</span><span class="pl-k">::</span> create();</span></pre></div>
+
+<p>OR</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$msg</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Success</span>();</span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$msg</span><span class="pl-k">-&gt;</span>create();</span></pre></div>
+
+<h2>
 <a id="rhondaerror" class="anchor" href="#rhondaerror" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Error</h2>
 
 <table>
@@ -126,6 +151,8 @@
 <span class="pl-s1">  }<span class="pl-k">catch</span>(<span class="pl-c1">\</span><span class="pl-c1">Exception</span> <span class="pl-smi">$e</span>){</span>
 <span class="pl-s1">    <span class="pl-c1">echo</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Error</span><span class="pl-k">::</span>handle(<span class="pl-smi">$e</span>);</span>
 <span class="pl-s1">  }</span></pre></div>
+
+<p>OR</p>
 
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-k">try</span>{</span>
 <span class="pl-s1">    <span class="pl-k">throw</span> <span class="pl-k">new</span> <span class="pl-c1">Exception</span>(<span class="pl-s"><span class="pl-pds">"</span>Demo Error Exception<span class="pl-pds">"</span></span>);</span>
@@ -204,6 +231,139 @@
 <span class="pl-s1">}<span class="pl-k">catch</span>(<span class="pl-c1">\</span><span class="pl-c1">Exception</span> <span class="pl-smi">$e</span>){</span>
 <span class="pl-s1">  <span class="pl-smi">$error</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Error</span>();</span>
 <span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$error</span><span class="pl-k">-&gt;</span>handle(<span class="pl-smi">$e</span>);</span>
+<span class="pl-s1">}</span></pre></div>
+
+<h2>
+<a id="rhondastrings" class="anchor" href="#rhondastrings" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Strings</h2>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<strong>verify(</strong> <em>type_string, test_string</em> <strong>)</strong>
+</td>
+<td>Return True/False</td>
+</tr>
+<tr>
+<td>
+<strong>verify_or_error(</strong> <em>type_string, test_string</em> <strong>)</strong>
+</td>
+<td>Return True/False or throws exception</td>
+</tr>
+<tr>
+<td>
+<strong>normalize(</strong> <em>string</em> <strong>)</strong>
+</td>
+<td>Returns normalized string</td>
+</tr>
+</tbody>
+</table>
+
+<h4>
+<a id="string-normalization" class="anchor" href="#string-normalization" aria-hidden="true"><span class="octicon octicon-link"></span></a>String Normalization</h4>
+
+<ul>
+<li>Removes non word characters</li>
+<li>Converts the string to lowercse</li>
+<li>Converts spaces and dashes to underscores</li>
+<li>Trims trailing invalid characters</li>
+</ul>
+
+<h4>
+<a id="verification-types" class="anchor" href="#verification-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Verification Types</h4>
+
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>'email'</td>
+<td>Verifies proper email structure</td>
+</tr>
+<tr>
+<td>'username'</td>
+<td>Tests that string only includes a-z 0-9 . - or _</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Test that a string is a valid email (without exception)</strong></p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">try</span>{</span>
+<span class="pl-s1">  <span class="pl-c">// PASS</span></span>
+<span class="pl-s1">  <span class="pl-smi">$string</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>test@test.com<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Strings</span><span class="pl-k">::</span> validate(<span class="pl-s"><span class="pl-pds">'</span>email<span class="pl-pds">'</span></span>,<span class="pl-smi">$string</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c">// FAIL</span></span>
+<span class="pl-s1">  <span class="pl-smi">$string</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>test@test<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Strings</span><span class="pl-k">::</span> validate(<span class="pl-s"><span class="pl-pds">'</span>email<span class="pl-pds">'</span></span>,<span class="pl-smi">$string</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c">// Catch will not be invoked</span></span>
+<span class="pl-s1">}<span class="pl-k">catch</span>(<span class="pl-c1">\</span><span class="pl-c1">Exception</span> <span class="pl-smi">$e</span>){</span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Error</span><span class="pl-k">::</span> handle(<span class="pl-smi">$e</span>);</span>
+<span class="pl-s1">}</span></pre></div>
+
+<p><strong>Test that a string is a valid email (with exception)</strong></p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-k">try</span>{</span>
+<span class="pl-s1">  <span class="pl-c">// PASS</span></span>
+<span class="pl-s1">  <span class="pl-smi">$string</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>test@test.com<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Strings</span><span class="pl-k">::</span> validate_or_error(<span class="pl-s"><span class="pl-pds">'</span>email<span class="pl-pds">'</span></span>,<span class="pl-smi">$string</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c">// FAIL</span></span>
+<span class="pl-s1">  <span class="pl-smi">$string</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>test@test<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Strings</span><span class="pl-k">::</span> validate_or_error(<span class="pl-s"><span class="pl-pds">'</span>email<span class="pl-pds">'</span></span>,<span class="pl-smi">$string</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c">// Catch will be invoked</span></span>
+<span class="pl-s1">}<span class="pl-k">catch</span>(<span class="pl-c1">\</span><span class="pl-c1">Exception</span> <span class="pl-smi">$e</span>){</span>
+<span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Error</span><span class="pl-k">::</span> handle(<span class="pl-smi">$e</span>);</span>
+<span class="pl-s1">}</span></pre></div>
+
+<p><strong>Normalize a string</strong></p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$input</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">'</span>Some TEST-@#string-#$-!@<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Strings</span><span class="pl-k">::</span> normalize(<span class="pl-smi">$input</span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c">// Returns</span></span>
+<span class="pl-s1">  <span class="pl-c1">some_test_string</span></span></pre></div>
+
+<h2>
+<a id="rhondaheaders" class="anchor" href="#rhondaheaders" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Headers</h2>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>getallheaders()</td>
+<td>Return an Array of all request headers, works for Apache, PHP, and Nginx servers</td>
+</tr>
+</tbody>
+</table>
+
+<p>Retrieve All request headers as an Array</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$headers</span> <span class="pl-k">=</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Headers</span><span class="pl-k">::</span> <span class="pl-c1">getallheaders</span>();</span>
+<span class="pl-s1">}</span></pre></div>
+
+<p>OR</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$headers</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Headers</span>();</span>
+<span class="pl-s1">  <span class="pl-smi">$headers</span><span class="pl-k">-&gt;</span>getallheaders();</span>
 <span class="pl-s1">}</span></pre></div>
       </section>
       <footer>
