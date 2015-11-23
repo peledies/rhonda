@@ -197,11 +197,38 @@ try{
 Retrieve All request headers as an Array
 ```php
   $headers = \Rhonda\Headers:: getallheaders();
-}
 ```
 OR
 ```php
   $headers = new \Rhonda\Headers();
   $headers->getallheaders();
-}
+```
+
+##\Rhonda\Mysql
+
+
+| Method  | Description |
+| ------------- | ------------- |
+| real_escape(**String, Array, Object**)  | Escape the thing being passed in by utilizing mysqli and real_escape_string. These methods require a mysql connection so you will need to load a config file into the variable **DB**. real_escape uses **utf-8** as the charset.  When escaping an Array or Object, recursion is used and it will drill through the object/array and escape everything.  |
+
+**Escape a String**
+```php
+$string = "that's all folks";
+$string = \Rhonda\Mysql::real_escape($string);
+```
+
+**Escape an Object**
+```php
+$object = new \stdClass();
+$object->thing = "it's for real";
+$object = \Rhonda\Mysql::real_escape($object);
+```
+
+**Escape an Array**
+```php
+$array = array(
+   "ray"=>"it's escaping arrays"
+ , "ray2"=>"escape's this one too"
+);
+$array = \Rhonda\Mysql::real_escape($ray);
 ```
