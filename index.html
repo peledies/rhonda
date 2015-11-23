@@ -357,14 +357,49 @@
 
 <p>Retrieve All request headers as an Array</p>
 
-<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$headers</span> <span class="pl-k">=</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Headers</span><span class="pl-k">::</span> <span class="pl-c1">getallheaders</span>();</span>
-<span class="pl-s1">}</span></pre></div>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$headers</span> <span class="pl-k">=</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Headers</span><span class="pl-k">::</span> <span class="pl-c1">getallheaders</span>();</span></pre></div>
 
 <p>OR</p>
 
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$headers</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Headers</span>();</span>
-<span class="pl-s1">  <span class="pl-smi">$headers</span><span class="pl-k">-&gt;</span>getallheaders();</span>
-<span class="pl-s1">}</span></pre></div>
+<span class="pl-s1">  <span class="pl-smi">$headers</span><span class="pl-k">-&gt;</span>getallheaders();</span></pre></div>
+
+<h2>
+<a id="rhondamysql" class="anchor" href="#rhondamysql" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Mysql</h2>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>real_escape(<strong>String, Array, Object</strong>)</td>
+<td>Escape the thing being passed in by utilizing mysqli and real_escape_string. These methods require a mysql connection so you will need to load a config file into the variable <strong>DB</strong>. real_escape uses <strong>utf-8</strong> as the charset.  When escaping an Array or Object, recursion is used and it will drill through the object/array and escape everything.</td>
+</tr>
+</tbody>
+</table>
+
+<p><strong>Escape a String</strong></p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$string</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>that's all folks<span class="pl-pds">"</span></span>;</span>
+<span class="pl-s1"><span class="pl-smi">$string</span> <span class="pl-k">=</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Mysql</span><span class="pl-k">::</span>real_escape(<span class="pl-smi">$string</span>);</span></pre></div>
+
+<p><strong>Escape an Object</strong></p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$object</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\stdClass</span>();</span>
+<span class="pl-s1"><span class="pl-smi">$object</span><span class="pl-k">-&gt;</span><span class="pl-smi">thing</span> <span class="pl-k">=</span> <span class="pl-s"><span class="pl-pds">"</span>it's for real<span class="pl-pds">"</span></span>;</span>
+<span class="pl-s1"><span class="pl-smi">$object</span> <span class="pl-k">=</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Mysql</span><span class="pl-k">::</span>real_escape(<span class="pl-smi">$object</span>);</span></pre></div>
+
+<p><strong>Escape an Array</strong></p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-smi">$array</span> <span class="pl-k">=</span> <span class="pl-c1">array</span>(</span>
+<span class="pl-s1">   <span class="pl-s"><span class="pl-pds">"</span>ray<span class="pl-pds">"</span></span><span class="pl-k">=&gt;</span><span class="pl-s"><span class="pl-pds">"</span>it's escaping arrays<span class="pl-pds">"</span></span></span>
+<span class="pl-s1"> , <span class="pl-s"><span class="pl-pds">"</span>ray2<span class="pl-pds">"</span></span><span class="pl-k">=&gt;</span><span class="pl-s"><span class="pl-pds">"</span>escape's this one too<span class="pl-pds">"</span></span></span>
+<span class="pl-s1">);</span>
+<span class="pl-s1"><span class="pl-smi">$array</span> <span class="pl-k">=</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Mysql</span><span class="pl-k">::</span>real_escape(<span class="pl-smi">$ray</span>);</span></pre></div>
       </section>
       <footer>
         <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
