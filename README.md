@@ -63,6 +63,7 @@ OR
 | Method  | Description |
 | ------------- | ------------- |
 | handle()  | Fromat an exception for return. Also writes a pretty stack trace to the error log   |
+| deprecation_warning(**message, alternate route**) | Adds a `Warning` header and changes the status code to `299` |
 ```php
   try{
     throw new Exception("Demo Error Exception");
