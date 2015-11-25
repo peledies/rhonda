@@ -48,4 +48,25 @@ class Error
       http_response_code($status);
       return json_encode(array("code"=>$status, "message"=>$e->getMessage()));
     }
+
+    /**
+    * Add a warning header in the response indicating that the requested route is going to be deprecated
+    *
+    * @param String - Message
+    * @param String - Alternate route (Optional)
+    *
+    * @example
+    * <code>
+    *  \Rhonda\Error:: deprecation_warning("(2015-11-25)", "http://api.example.com/new/route");
+    * </code>
+    *
+    * @since   2015-11-25
+    * @author  Deac Karns <deac@sdicg.com> 
+    **/
+    public static function deprecation_warning($message,$alternate_route=NULL) {
+      $alt = (!empty($alternate_route))? " Alternative Route:  $alternate_route" : "";
+
+      header('Warning: DEPRECATED API ROUTE: '.$message.$alt);
+      http_response_code(299);
+    }
 }
