@@ -1,36 +1,25 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en-us">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta charset="UTF-8">
     <title>Rhonda by peledies</title>
-
-    <link rel="stylesheet" href="stylesheets/styles.css">
-    <link rel="stylesheet" href="stylesheets/github-light.css">
-    <script src="javascripts/scale.fix.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <h1 class="header">Rhonda</h1>
-        <p class="header">A composer package that provides solutions to common PHP tasks</p>
+    <section class="page-header">
+      <h1 class="project-name">Rhonda</h1>
+      <h2 class="project-tagline">A composer package that provides solutions to common PHP tasks</h2>
+      <a href="https://github.com/peledies/rhonda" class="btn">View on GitHub</a>
+      <a href="https://github.com/peledies/rhonda/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/peledies/rhonda/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-        <ul>
-          <li class="download"><a class="buttons" href="https://github.com/peledies/rhonda/zipball/master">Download ZIP</a></li>
-          <li class="download"><a class="buttons" href="https://github.com/peledies/rhonda/tarball/master">Download TAR</a></li>
-          <li><a class="buttons github" href="https://github.com/peledies/rhonda">View On GitHub</a></li>
-        </ul>
-
-        <p class="header">This project is maintained by <a class="header name" href="https://github.com/peledies">peledies</a></p>
-
-
-      </header>
-      <section>
-        <h1>
+    <section class="main-content">
+      <h1>
 <a id="help-me-rhonda" class="anchor" href="#help-me-rhonda" aria-hidden="true"><span class="octicon octicon-link"></span></a>Help me \Rhonda</h1>
 
 <p>Rhonda is a composer installable package that provides solutions to common PHP tasks.</p>
@@ -405,12 +394,68 @@
 <span class="pl-s1"> , <span class="pl-s"><span class="pl-pds">"</span>ray2<span class="pl-pds">"</span></span><span class="pl-k">=&gt;</span><span class="pl-s"><span class="pl-pds">"</span>escape's this one too<span class="pl-pds">"</span></span></span>
 <span class="pl-s1">);</span>
 <span class="pl-s1"><span class="pl-smi">$array</span> <span class="pl-k">=</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Mysql</span><span class="pl-k">::</span>real_escape(<span class="pl-smi">$ray</span>);</span></pre></div>
-      </section>
-      <footer>
-        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+
+<h2>
+<a id="rhondaservicechain" class="anchor" href="#rhondaservicechain" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\ServiceChain</h2>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>register(<code>optional</code>)</td>
+<td>Register this application or micro service to the service chain.</td>
+</tr>
+<tr>
+<td>report(<code>Boolean</code>)</td>
+<td>Return a string (default) or an Array of the service chain if parameter is set to TRUE</td>
+</tr>
+</tbody>
+</table>
+
+<p>If you are using ServiceChain, <code>register()</code> should be one of the first things you do in your application,
+preferably immediately after the composer autoload.</p>
+
+<p>The default behavior of register is to use your config object named <code>system</code> for a property named <code>host</code>.
+<code>\Rhonda\ServiceChain:: register()</code> will automatically use that value for the service name.</p>
+
+<p>(Prefered) Register this micro service to the service chain using a config file</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-k">require_once</span> <span class="pl-c1">__DIR__</span> <span class="pl-k">.</span> <span class="pl-s"><span class="pl-pds">'</span>/../vendor/autoload.php<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c">// Load your configuration file to memory</span></span>
+<span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Config</span><span class="pl-k">::</span> load_file(<span class="pl-s"><span class="pl-pds">'</span>system<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>path/to/file.json<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c">// Register your service name</span></span>
+<span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">ServiceChain</span><span class="pl-k">::</span> register();</span></pre></div>
+
+<p>Register this micro service to the service chain using a parameter</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-k">require_once</span> <span class="pl-c1">__DIR__</span> <span class="pl-k">.</span> <span class="pl-s"><span class="pl-pds">'</span>/../vendor/autoload.php<span class="pl-pds">'</span></span>;</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c">// Register your service name</span></span>
+<span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">ServiceChain</span><span class="pl-k">::</span> register(<span class="pl-s"><span class="pl-pds">'</span>Service-Name<span class="pl-pds">'</span></span>);</span></pre></div>
+
+<p>Get the current service chain state</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c">// "Returns: service1 =&gt; service2 =&gt; etc"</span></span>
+<span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">ServiceChain</span><span class="pl-k">::</span> report();</span>
+<span class="pl-s1"></span>
+<span class="pl-s1">  <span class="pl-c">// "Returns: array("service1", "service2", "etc")</span></span>
+<span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">ServiceChain</span><span class="pl-k">::</span> report(<span class="pl-c1">TRUE</span>);</span></pre></div>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/peledies/rhonda">Rhonda</a> is maintained by <a href="https://github.com/peledies">peledies</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
-    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
-		
+
+    </section>
+
+  
   </body>
 </html>
