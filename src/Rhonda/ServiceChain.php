@@ -20,16 +20,18 @@ class ServiceChain
    * @since   2015-12-17
    * @author  Deac Karns <deac@sdicg.com>
    */
-  public function register()
+  public function register($name=NULL)
   {
     $headers = \Rhonda\Headers:: getallheaders();
     $config = \Rhonda\Config:: get('system');
 
-    if(!empty($config)){
+    if(empty($name) && !empty($config)){
       // see if service is set in the config
       if(!empty($config->host)){
         $service = $config->host;
       }
+    }else if(!empty($name)){
+      $service = $name;
     }else{
       $service = "Generic-Service";
     }
@@ -51,8 +53,18 @@ class ServiceChain
     self::$chain = json_encode($chain);
     $_SERVER['HTTP_SERVICE_CHAIN'] = self::$chain;
   }
-
-  public function report()
+  /**
+   * Report the existing service chain state to the error log. also
+   * returns the Service-chain as a string
+   *
+   * @param   Boolean - If TRUE an array will be returned
+   *
+   * @return  String (default) or Array of the service chain
+   *
+   * @since   2015-12-17
+   * @author  Deac Karns <deac@sdicg.com>
+   */
+  public function report($array=FALSE)
   {
     $chain = (isset(self::$chain)) ? json_decode(self::$chain) : array();
 
@@ -60,13 +72,8 @@ class ServiceChain
 
     $chain_string = join(' => ', array_filter($chain));
     error_log("\n----- Service Chain -----\n" . $chain_string . "\n-------------------------");
-    return $chain_string;
+
+    return ($array)? $chain : $chain_string;
   }
 
-  public function add_to_headers($headers){
-    //error_log(print_r(self::$chain, TRUE));
-    $headers['Service-Chain'] = json_encode(self::$chain);
-
-    return $headers;
-  }
 }

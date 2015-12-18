@@ -12,7 +12,7 @@ namespace Rhonda;
 class APIGateway{
 
   /**
-   * Class constructor for api connection tool
+   * Class constructor for api connection tool. The constructor will forward all existing headers.
    *
    * @param String - GET,POST,PUT,DELETE
    * @param String - API route to be called

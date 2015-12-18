@@ -233,3 +233,44 @@ $array = array(
 );
 $array = \Rhonda\Mysql::real_escape($ray);
 ```
+
+##\Rhonda\ServiceChain
+| Method  | Description |
+| ------------- | ------------- |
+| register(`optional`)  | Register this application or micro service to the service chain.  |
+| report(`Boolean`)  | Return a string (default) or an Array of the service chain if parameter is set to TRUE  |
+
+
+If you are using ServiceChain, `register()` should be one of the first things you do in your application,
+preferably immediately after the composer autoload.
+
+The default behavior of register is to use your config object named `system` for a property named `host`.
+`\Rhonda\ServiceChain:: register()` will automatically use that value for the service name.
+
+(Prefered) Register this micro service to the service chain using a config file
+```php
+  require_once __DIR__ . '/../vendor/autoload.php';
+  
+  // Load your configuration file to memory
+  \Rhonda\Config:: load_file('system', 'path/to/file.json');
+  
+  // Register your service name
+  \Rhonda\ServiceChain:: register();
+```
+
+Register this micro service to the service chain using a parameter
+```php
+  require_once __DIR__ . '/../vendor/autoload.php';
+  
+  // Register your service name
+  \Rhonda\ServiceChain:: register('Service-Name');
+```
+
+Get the current service chain state
+```php  
+  // "Returns: service1 => service2 => etc"
+  \Rhonda\ServiceChain:: report();
+
+  // "Returns: array("service1", "service2", "etc")
+  \Rhonda\ServiceChain:: report(TRUE);
+```
