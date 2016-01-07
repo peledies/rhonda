@@ -38,6 +38,7 @@ class APIGateway{
     // Look for existing headers and forward them along as well. Existing headers will not be overwritten.
     $headers = array_merge($additional_headers, \Rhonda\Headers:: getallheaders());
     unset($headers['Host']);
+    unset($headers['Content-Length']);
 
     $this->headers = $headers;
 
