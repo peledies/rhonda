@@ -128,8 +128,8 @@ try{
 ##\Rhonda\Strings
 | Method  | Description |
 | ------------- | ------------- |
-| **verify(** *type_string, test_string* **)**  | Return True/False  |
-| **verify_or_error(** *type_string, test_string* **)** | Return True/False or throws exception |
+| **validate(** *type_string, test_string* **)**  | Return True/False  |
+| **validate_or_error(** *type_string, test_string* **)** | Return True/False or throws exception |
 | **normalize(** *string* **)** | Returns normalized string |
 
 #### String Normalization
@@ -138,7 +138,7 @@ try{
  * Converts spaces and dashes to underscores
  * Trims trailing invalid characters
 
-#### Verification Types
+#### Validation Types
 
 | Type  | Description |
 | ------------- | ------------- |
@@ -250,10 +250,10 @@ The default behavior of register is to use your config object named `system` for
 (Prefered) Register this micro service to the service chain using a config file
 ```php
   require_once __DIR__ . '/../vendor/autoload.php';
-  
+
   // Load your configuration file to memory
   \Rhonda\Config:: load_file('system', 'path/to/file.json');
-  
+
   // Register your service name
   \Rhonda\ServiceChain:: register();
 ```
@@ -261,13 +261,13 @@ The default behavior of register is to use your config object named `system` for
 Register this micro service to the service chain using a parameter
 ```php
   require_once __DIR__ . '/../vendor/autoload.php';
-  
+
   // Register your service name
   \Rhonda\ServiceChain:: register('Service-Name');
 ```
 
 Get the current service chain state
-```php  
+```php
   // "Returns: service1 => service2 => etc"
   \Rhonda\ServiceChain:: report();
 
