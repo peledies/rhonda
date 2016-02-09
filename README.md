@@ -274,3 +274,16 @@ Get the current service chain state
   // "Returns: array("service1", "service2", "etc")
   \Rhonda\ServiceChain:: report(TRUE);
 ```
+
+##\Rhonda\CORS
+| Method  | Description |
+| ------------- | ------------- |
+| allow_headers()  | Set headers to allow CORS request  |
+```php
+  \Rhonda\CORS::allow_headers();
+```
+OR
+```php
+  $cors = new \Rhonda\CORS();
+  $cors->allow_headers();
+```
