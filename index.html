@@ -27,6 +27,7 @@
         <a href="#rhondaheaders" class="btn">Headers</a>
         <a href="#rhondamysql" class="btn">Mysql</a>
         <a href="#rhondaservicechain" class="btn">ServiceChain</a>
+        <a href="#rhondacors" class="btn">CORS</a>
     </section>
 
     <section class="main-content">
@@ -458,6 +459,37 @@ preferably immediately after the composer autoload.</p>
 <span class="pl-s1"></span>
 <span class="pl-s1">  <span class="pl-c">// "Returns: array("service1", "service2", "etc")</span></span>
 <span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">ServiceChain</span><span class="pl-k">::</span> report(<span class="pl-c1">TRUE</span>);</span></pre></div>
+
+
+<h2>
+<a id="rhondacors" class="anchor" href="#rhondacors" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\CORS</h2>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>allow_headers()</td>
+<td>Set headers to allow CORS request</td>
+</tr>
+</tbody>
+</table>
+
+<p>Allow CORS requests.</p>
+<p><strong>DO NOT</strong> forget to add a <strong>OPTIONS</strong> route to your router else CORS will still deny your request</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">CORS</span><span class="pl-k">::</span>allow_headers();</span></pre></div>
+
+<p>OR</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$cors</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">CORS</span>();</span>
+<span class="pl-s1">  <span class="pl-smi">$cors</span><span class="pl-k">-&gt;</span>allow_headers();</span></pre></div>
+
+
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/peledies/rhonda">Rhonda</a> is maintained by <a href="https://github.com/peledies">peledies</a>.</span>
