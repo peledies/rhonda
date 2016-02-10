@@ -90,8 +90,8 @@
 </thead>
 <tbody>
 <tr>
-<td>get()</td>
-<td>Get the provided request body</td>
+<td>get(boolean)</td>
+<td>Get the provided request body. passing TRUE will bypass exceptions. Defaults to FALSE</td>
 </tr>
 </tbody>
 </table>
@@ -102,6 +102,11 @@
 
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$request_body</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">RequestBody</span>();</span>
 <span class="pl-s1">  <span class="pl-smi">$request_body</span><span class="pl-k">-&gt;</span>get();</span></pre></div>
+
+<p>OR Bypass Exception</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$request_body</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">RequestBody</span>();</span>
+<span class="pl-s1">  <span class="pl-smi">$request_body</span><span class="pl-k">-&gt;</span>get(TRUE);</span></pre></div>
 
 <h2>
 <a id="rhondasuccess" class="anchor" href="#rhondasuccess" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Success</h2>
