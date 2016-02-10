@@ -34,7 +34,7 @@ OR
 ##\Rhonda\RequestBody
 | Method  | Description |
 | ------------- | ------------- |
-| get()  | Get the provided request body  |
+| get(boolean)  | Get the provided request body, exception can be bypassed by putting TRUE as an argument  |
 ```php
   \Rhonda\RequestBody::get();
 ```
@@ -43,7 +43,11 @@ OR
   $request_body = new \Rhonda\RequestBody();
   $request_body->get();
 ```
-
+OR Bypass exception
+```php
+  $request_body = new \Rhonda\RequestBody();
+  $request_body->get(TRUE);
+```
 
 ##\Rhonda\Success
 | Method  | Description |
