@@ -11,31 +11,33 @@ namespace Rhonda;
 */
 class CORS
 {
-    /**
-    * Allow CORS request 
-    * DO NOT forget to add a OPTIONS route to your router else CORS will still deny your request
-    *
-    * @example
-    * <code>
-    *   \Rhonda\CORS::allow_headers();
-    * </code>
-    *
-    * @example
-    * <code>
-    *   $cors = new \Rhonda\CORS();
-    *   $cors->allow_headers();
-    * </code>
-    *
-    * @return void
-    *
-    * @since   2016-02-09
-    * @author  Wesley Dekkers <wesley@sdicg.com>
-    **/
-    public static function allow_headers()
-    {
-      header("Access-Control-Allow-Origin: *");
-      header("Access-Control-Allow-Methods: POST, PUT, DELETE, GET, OPTIONS");
-      header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept, Authorization, auth, user");
-      header("Access-Control-Max-Age: 1728000");
-    }
+  /**
+  * Allow CORS request 
+  * DO NOT forget to add a OPTIONS route to your router else CORS will still deny your request
+  *
+  * @example
+  * <code>
+  *   \Rhonda\CORS::allow_headers();
+  * </code>
+  *
+  * @example
+  * <code>
+  *   $cors = new \Rhonda\CORS();
+  *   $cors->allow_headers();
+  * </code>
+  *
+  * @return void
+  *
+  * @since   2016-02-09
+  * @author  Wesley Dekkers <wesley@sdicg.com>
+  **/
+  public static function allow_headers()
+  {
+    $allow_headers = implode(",", array_keys(\Rhonda\Headers::getallheaders()));
+
+    header("Access-Control-Allow-Origin: *");
+    header("Access-Control-Allow-Methods: POST, PUT, DELETE, GET, OPTIONS");
+    header("Access-Control-Allow-Headers: $allow_headers");
+    header("Access-Control-Max-Age: 1728000");
+  }
 }
