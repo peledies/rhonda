@@ -33,11 +33,11 @@ class CORS
   **/
   public static function allow_headers()
   {
-    $allow_headers = implode(",", array_keys(\Rhonda\Headers::getallheaders()));
-
+    $allow_headers = \Rhonda\Headers::getallheaders()['Access-Control-Request-Headers'];
+    
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: POST, PUT, DELETE, GET, OPTIONS");
-    header("Access-Control-Allow-Headers: $allow_headers");
+    if(!empty($allow_headers)){ header("Access-Control-Allow-Headers: $allow_headers"); }
     header("Access-Control-Max-Age: 1728000");
   }
 }
