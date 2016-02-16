@@ -17,6 +17,24 @@ Add the folowing to your composer.json file
 
 #Classes and Methods
 
+##\Rhonda\Autoload
+
+Recursivly load all .php files in the provided path, excludes any index.php files.
+
+| Method  | Description |
+| ------------- | ------------- |
+| path(string)  | Path to load all php files recursively  |
+
+```php
+  \Rhonda\Autoload::path(__DIR__."/path/to/load/");
+```
+OR
+```php
+  $load = new \Rhonda\Autoload();
+  $load->path(__DIR__."/path/to/load/");
+```
+
+
 ##\Rhonda\UUID
 | Method  | Description |
 | ------------- | ------------- |
