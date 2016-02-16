@@ -2,12 +2,12 @@
 namespace Rhonda;
 
 /**
- * Class to handle CORS headers
+ * Class to handle Autoloading .php files
  *
  * @category  Class
  * @version   0.0.1
  * @since     2016-02-09
- * @author    Wesley Dekkers <wesley@sdicg.com>
+ * @author    Deac Karns <deac@sdicg.com>
  */
 class Autoload
 {
