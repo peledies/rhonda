@@ -17,6 +17,7 @@
       <a href="https://github.com/peledies/rhonda/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/peledies/rhonda/tarball/master" class="btn">Download .tar.gz</a>
         <h2 class="project-tagline">Available Helpers</h2>
+        <a href="#rhondaautoload" class="btn">Autoload</a>
         <a href="#rhondauuid" class="btn">UUID</a>
         <a href="#rhondarequestbody" class="btn">RequestBody</a>
         <a href="#rhondasuccess" class="btn">Success</a>
@@ -53,6 +54,31 @@
 
 <h1>
 <a id="classes-and-methods" class="anchor" href="#classes-and-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes and Methods</h1>
+
+<h2>
+  <a id="rhondaautoload" class="anchor" href="#rhondaautoload" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Autoload</h2>
+
+<table>
+  <thead>
+  <tr>
+    <th>Method</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>path(string)</td>
+    <td>Path to load all php files recursively</td>
+  </tr>
+  </tbody>
+</table>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Autoload</span><span class="pl-k">::</span>path(__DIR__."/path/to/load/");</span></pre></div>
+
+<p>OR</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$load</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Autoload</span>();</span>
+<span class="pl-s1">  <span class="pl-smi">$load</span><span class="pl-k">-&gt;</span>path(__DIR__."/path/to/load/");</span></pre></div>
 
 <h2>
 <a id="rhondauuid" class="anchor" href="#rhondauuid" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\UUID</h2>
