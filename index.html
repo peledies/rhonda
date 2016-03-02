@@ -417,6 +417,10 @@
 <td>real_escape(<strong>String, Array, Object</strong>)</td>
 <td>Escape the thing being passed in by utilizing mysqli and real_escape_string. These methods require a mysql connection so you will need to load a config file into the variable <strong>DB</strong>. real_escape uses <strong>utf-8</strong> as the charset.  When escaping an Array or Object, recursion is used and it will drill through the object/array and escape everything.</td>
 </tr>
+<tr>
+<td>bool_to_string(<strong>String</strong>)</td>
+<td>Convert ANY truthy or falsy thing into a '1' or a '0' for mysql query building</td>
+</tr>
 </tbody>
 </table>
 
@@ -438,6 +442,10 @@
 <span class="pl-s1"> , <span class="pl-s"><span class="pl-pds">"</span>ray2<span class="pl-pds">"</span></span><span class="pl-k">=&gt;</span><span class="pl-s"><span class="pl-pds">"</span>escape's this one too<span class="pl-pds">"</span></span></span>
 <span class="pl-s1">);</span>
 <span class="pl-s1"><span class="pl-smi">$array</span> <span class="pl-k">=</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Mysql</span><span class="pl-k">::</span>real_escape(<span class="pl-smi">$ray</span>);</span></pre></div>
+
+<p><strong>Bool to string</strong></p>
+
+<span class="pl-s1"><span class="pl-smi">$value</span> <span class="pl-k">=</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Mysql</span><span class="pl-k">::</span>bool_to_string(<span class="pl-smi">'true'</span>);</span></pre></div>
 
 <h2>
 <a id="rhondaservicechain" class="anchor" href="#rhondaservicechain" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\ServiceChain</h2>
