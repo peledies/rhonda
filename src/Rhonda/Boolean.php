@@ -35,6 +35,6 @@ class Boolean
   * @author  Wesley Dekkers <wesley@sdicg.com> 
   **/
   public static function evaluate($input) {
-    return (filter_var($input, FILTER_VALIDATE_BOOLEAN))? 'TRUE':'FALSE';
+    return (filter_var($input, FILTER_VALIDATE_BOOLEAN))? TRUE:FALSE;
   } 
 }
