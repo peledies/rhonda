@@ -29,6 +29,7 @@
         <a href="#rhondamysql" class="btn">Mysql</a>
         <a href="#rhondaservicechain" class="btn">ServiceChain</a>
         <a href="#rhondacors" class="btn">CORS</a>
+        <a href="#rhondaboolean" class="btn">Boolean</a>
     </section>
 
     <section class="main-content">
@@ -519,6 +520,35 @@ preferably immediately after the composer autoload.</p>
 
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$cors</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">CORS</span>();</span>
 <span class="pl-s1">  <span class="pl-smi">$cors</span><span class="pl-k">-&gt;</span>allow_headers();</span></pre></div>
+
+
+
+<h2>
+<a id="rhondaboolean" class="anchor" href="#rhondaboolean" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Boolean</h2>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>evaluate(STRING)</td>
+<td>Evaluate string to determine Boolean TRUE or FALSE</td>
+</tr>
+</tbody>
+</table>
+
+<p>Determine Boolean</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Boolean</span><span class="pl-k">::</span>evaluate('yes');</span></pre></div>
+
+<p>OR</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$boolean</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Boolean</span>();</span>
+<span class="pl-s1">  <span class="pl-smi">$boolean</span><span class="pl-k">-&gt;</span>evaluate('no');</span></pre></div>
 
 
 
