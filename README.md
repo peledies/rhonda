@@ -309,3 +309,17 @@ OR
   $cors = new \Rhonda\CORS();
   $cors->allow_headers();
 ```
+
+
+##\Rhonda\Boolean
+| Method  | Description |
+| ------------- | ------------- |
+| evaluate(STRING)  | Read a string to change to a boolean TRUE/FALSE  |
+```php
+  \Rhonda\Boolean::evaluate('yes');
+```
+OR
+```php
+  $boolean = new \Rhonda\Boolean();
+  $boolean->evaluate('false');
+```
