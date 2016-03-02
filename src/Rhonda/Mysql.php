@@ -101,4 +101,8 @@ class Mysql
     }
     return $arr;
   }
+
+  public static function bool_to_string($value){
+    return (\Rhonda\Boolean::evaluate($value))? '1':'0';
+  }
 }
