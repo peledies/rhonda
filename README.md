@@ -233,6 +233,7 @@ OR
 | Method  | Description |
 | ------------- | ------------- |
 | real_escape(**String, Array, Object**)  | Escape the thing being passed in by utilizing mysqli and real_escape_string. These methods require a mysql connection so you will need to load a config file into the variable **DB**. real_escape uses **utf-8** as the charset.  When escaping an Array or Object, recursion is used and it will drill through the object/array and escape everything.  |
+| bool_to_string(STRING) | Convert ANY truthy or falsy thing into a '1' or a '0' for mysql query building |
 
 **Escape a String**
 ```php
@@ -254,6 +255,14 @@ $array = array(
  , "ray2"=>"escape's this one too"
 );
 $array = \Rhonda\Mysql::real_escape($ray);
+```
+
+**Convert to Mysql boolean**
+```php
+  $value = \Rhonda\Mysql:: bool_to_string('true');
+  OR
+  $mysql = new \Rhonda\Mysql();
+  $value = $mysql->bool_to_string('true');
 ```
 
 ##\Rhonda\ServiceChain
