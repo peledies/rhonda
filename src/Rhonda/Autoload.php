@@ -37,10 +37,17 @@ class Autoload
     $ite = new \RecursiveIteratorIterator($dir);
     $files = new \RegexIterator($ite, $pattern, \RegexIterator::GET_MATCH);
 
+    $files_array = array();
     foreach($files as $file) {
       if($file != "./index.php"){
-        include array_shift($file);
+        $files_array[] = array_shift($file);
       }
+    }
+
+    asort($files_array);
+
+    foreach($files_array as $file) {
+      include $file;
     }
 
   }
