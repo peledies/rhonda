@@ -16,6 +16,22 @@ try{
   $error = new \Rhonda\Error();
   echo $error->handle($e);
 }
+echo "</br>";
+
+try{
+  throw new Exception("Demo Error Exception 3", 404);
+}catch(\Exception $e){
+  $error = new \Rhonda\Error();
+  echo $error->handle($e);
+}
+echo "</br>";
+
+try{
+  throw new Exception("Demo Error Exception 4");
+}catch(\Exception $e){
+  $error = new \Rhonda\Error();
+  echo $error->handle($e, 402);
+}
 
 \Rhonda\Error:: deprecation_warning("message", "http://alternate/route");
 echo "</br>";
