@@ -37,6 +37,16 @@ class Error
     *   }
     * </code>
     *
+    * @example
+    * <code>
+    *   try{
+    *     throw new Exception("Demo Error Exception", 404);
+    *   }catch(\Exception $e){
+    *     $error = new \Rhonda\Error();
+    *     echo $error->handle($e);
+    *   }
+    * </code>
+    *
     * @return Return
     *
     * @since   2014-24-11
