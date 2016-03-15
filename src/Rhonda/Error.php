@@ -42,8 +42,14 @@ class Error
     * @since   2014-24-11
     * @author  Deac Karns <deac@sdicg.com> 
     **/
-    public static function handle($e, $status = 400)
+    public static function handle($e, $status = FALSE)
     {
+      if(!$status){
+        $status = 400; // Default when no status is given
+        if($e->getCode() != 0){
+          $status = $e->getCode();
+        }
+      }
       error_log($e->getMessage()."\n------\n".$e->getTraceAsString()."\n------\n");
       http_response_code($status);
       return json_encode(array("code"=>$status, "message"=>$e->getMessage()));
