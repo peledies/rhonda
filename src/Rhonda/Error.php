@@ -37,13 +37,29 @@ class Error
     *   }
     * </code>
     *
+    * @example
+    * <code>
+    *   try{
+    *     throw new Exception("Demo Error Exception", 404);
+    *   }catch(\Exception $e){
+    *     $error = new \Rhonda\Error();
+    *     echo $error->handle($e);
+    *   }
+    * </code>
+    *
     * @return Return
     *
     * @since   2014-24-11
     * @author  Deac Karns <deac@sdicg.com> 
     **/
-    public static function handle($e, $status = 400)
+    public static function handle($e, $status = FALSE)
     {
+      if(!$status){
+        $status = 400; // Default when no status is given
+        if($e->getCode() != 0){
+          $status = $e->getCode();
+        }
+      }
       error_log($e->getMessage()."\n------\n".$e->getTraceAsString()."\n------\n");
       http_response_code($status);
       return json_encode(array("code"=>$status, "message"=>$e->getMessage()));
@@ -66,7 +82,6 @@ class Error
     public static function deprecation_warning($message,$alternate_route=NULL) {
       $alt = (!empty($alternate_route))? " Alternative Route:  $alternate_route" : "";
 
-      header('Warning: DEPRECATED API ROUTE: '.$message.$alt);
-      http_response_code(299);
+      header('Warning: 299 - "DEPRECATED API ROUTE: '.$message.$alt.'"');
     }
 }
