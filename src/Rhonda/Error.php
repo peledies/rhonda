@@ -82,7 +82,6 @@ class Error
     public static function deprecation_warning($message,$alternate_route=NULL) {
       $alt = (!empty($alternate_route))? " Alternative Route:  $alternate_route" : "";
 
-      header('Warning: DEPRECATED API ROUTE: '.$message.$alt);
-      http_response_code(299);
+      header('Warning: 299 - "DEPRECATED API ROUTE: '.$message.$alt.'"');
     }
 }
