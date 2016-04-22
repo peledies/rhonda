@@ -92,7 +92,7 @@ class Mysql
       $arr = array();
     }
     foreach ($collection as $key => $val) {
-      $val = (is_array($val) || is_object($val)) ? self:: escape_collection($val) : $mysqli->real_escape_string($val);
+      $val = (is_array($val) || is_object($val)) ? self:: escape_collection($val, $mysqli) : $mysqli->real_escape_string($val);
       if(is_object($collection)){
         $arr->$key = $val;
       }else{
