@@ -2,7 +2,7 @@
 <html lang="en-us">
   <head>
     <meta charset="UTF-8">
-    <title>Help me Rhonda by peledies</title>
+    <title>Rhonda by peledies</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
@@ -11,41 +11,27 @@
   </head>
   <body>
     <section class="page-header">
-      <h1 class="project-name">Help me \Rhonda</h1>
+      <h1 class="project-name">Rhonda</h1>
       <h2 class="project-tagline">A composer package that provides solutions to common PHP tasks</h2>
       <a href="https://github.com/peledies/rhonda" class="btn">View on GitHub</a>
       <a href="https://github.com/peledies/rhonda/zipball/master" class="btn">Download .zip</a>
       <a href="https://github.com/peledies/rhonda/tarball/master" class="btn">Download .tar.gz</a>
-        <h2 class="project-tagline">Available Helpers</h2>
-        <a href="#rhondaautoload" class="btn">Autoload</a>
-        <a href="#rhondauuid" class="btn">UUID</a>
-        <a href="#rhondarequestbody" class="btn">RequestBody</a>
-        <a href="#rhondasuccess" class="btn">Success</a>
-        <a href="#rhondaerror" class="btn">Error</a>
-        <a href="#rhondaconfig" class="btn">Config</a>
-        <a href="#rhondaapigateway" class="btn">APIGateway</a>
-        <a href="#rhondastrings" class="btn">Strings</a>
-        <a href="#rhondaheaders" class="btn">Headers</a>
-        <a href="#rhondamysql" class="btn">Mysql</a>
-        <a href="#rhondaservicechain" class="btn">ServiceChain</a>
-        <a href="#rhondacors" class="btn">CORS</a>
-        <a href="#rhondaboolean" class="btn">Boolean</a>
     </section>
 
     <section class="main-content">
       <h1>
-<a id="help-me-rhonda" class="anchor" href="#help-me-rhonda" aria-hidden="true"><span class="octicon octicon-link"></span></a>Help me \Rhonda</h1>
+<a id="help-me-rhonda" class="anchor" href="#help-me-rhonda" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Help me \Rhonda</h1>
 
 <p>Rhonda is a composer installable package that provides solutions to common PHP tasks.</p>
 
 <h2>
-<a id="install" class="anchor" href="#install" aria-hidden="true"><span class="octicon octicon-link"></span></a>Install</h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h2>
 
 <div class="highlight highlight-source-shell"><pre>  composer require peledies/rhonda:<span class="pl-k">~</span>1
   composer install</pre></div>
 
 <h2>
-<a id="require-in-your-project" class="anchor" href="#require-in-your-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Require in your project</h2>
+<a id="require-in-your-project" class="anchor" href="#require-in-your-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Require in your project</h2>
 
 <p>Add the folowing to your composer.json file</p>
 
@@ -54,35 +40,37 @@
 <span class="pl-s1">  }</span></pre></div>
 
 <h1>
-<a id="classes-and-methods" class="anchor" href="#classes-and-methods" aria-hidden="true"><span class="octicon octicon-link"></span></a>Classes and Methods</h1>
+<a id="classes-and-methods" class="anchor" href="#classes-and-methods" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Classes and Methods</h1>
 
 <h2>
-  <a id="rhondaautoload" class="anchor" href="#rhondaautoload" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Autoload</h2>
+<a id="rhondaautoload" class="anchor" href="#rhondaautoload" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\Autoload</h2>
+
+<p>Recursivly load all .php files in the provided path, excludes any index.php files.</p>
 
 <table>
-  <thead>
-  <tr>
-    <th>Method</th>
-    <th>Description</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>path(string)</td>
-    <td>Path to load all php files recursively</td>
-  </tr>
-  </tbody>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>path(string)</td>
+<td>Path to load all php files recursively</td>
+</tr>
+</tbody>
 </table>
 
-<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Autoload</span><span class="pl-k">::</span>path(__DIR__."/path/to/load/");</span></pre></div>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Autoload</span><span class="pl-k">::</span>path(<span class="pl-c1">__DIR__</span><span class="pl-k">.</span><span class="pl-s"><span class="pl-pds">"</span>/path/to/load/<span class="pl-pds">"</span></span>);</span></pre></div>
 
 <p>OR</p>
 
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$load</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Autoload</span>();</span>
-<span class="pl-s1">  <span class="pl-smi">$load</span><span class="pl-k">-&gt;</span>path(__DIR__."/path/to/load/");</span></pre></div>
+<span class="pl-s1">  <span class="pl-smi">$load</span><span class="pl-k">-&gt;</span>path(<span class="pl-c1">__DIR__</span><span class="pl-k">.</span><span class="pl-s"><span class="pl-pds">"</span>/path/to/load/<span class="pl-pds">"</span></span>);</span></pre></div>
 
 <h2>
-<a id="rhondauuid" class="anchor" href="#rhondauuid" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\UUID</h2>
+<a id="rhondauuid" class="anchor" href="#rhondauuid" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\UUID</h2>
 
 <table>
 <thead>
@@ -107,7 +95,49 @@
 <span class="pl-s1">  <span class="pl-smi">$uuid</span><span class="pl-k">-&gt;</span>create();</span></pre></div>
 
 <h2>
-<a id="rhondarequestbody" class="anchor" href="#rhondarequestbody" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\RequestBody</h2>
+<a id="rhondarequest" class="anchor" href="#rhondarequest" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\Request</h2>
+
+<p>Package all incomming request data into a singleton that can be accessed by your 
+application. ALL data that goes through <code>packager</code> is automatically mysql_real_eacaped
+even array's and objects recursively.</p>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>get('param')</td>
+<td>Get the provided query string parameter, mysql escaped</td>
+</tr>
+<tr>
+<td>post()</td>
+<td>Get the provided request body, mysql escaped</td>
+</tr>
+</tbody>
+</table>
+
+<p>In order to use this class you need to first run the packager right after Rhonda
+is included in your project</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Request</span><span class="pl-k">::</span>packager();</span></pre></div>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c"># GET parameters</span></span>
+<span class="pl-s1">  <span class="pl-smi">$thing</span> <span class="pl-k">=</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Request</span><span class="pl-k">::</span>get();</span></pre></div>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c"># GET specific query string value</span></span>
+<span class="pl-s1">  <span class="pl-smi">$thing</span> <span class="pl-k">=</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Request</span><span class="pl-k">::</span>get(<span class="pl-s"><span class="pl-pds">'</span>string<span class="pl-pds">'</span></span>);</span></pre></div>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c"># POST body</span></span>
+<span class="pl-s1">  <span class="pl-smi">$thing</span> <span class="pl-k">=</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Request</span><span class="pl-k">::</span>post();</span></pre></div>
+
+<h2>
+<a id="rhondarequestbody" class="anchor" href="#rhondarequestbody" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\RequestBody</h2>
+
+<p>use \Rhonda\Request for a mysql escaped request body</p>
 
 <table>
 <thead>
@@ -119,7 +149,7 @@
 <tbody>
 <tr>
 <td>get(boolean)</td>
-<td>Get the provided request body. passing TRUE will bypass exceptions. Defaults to FALSE</td>
+<td>Get the provided request body, exception can be bypassed by putting TRUE as an argument</td>
 </tr>
 </tbody>
 </table>
@@ -131,13 +161,13 @@
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$request_body</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">RequestBody</span>();</span>
 <span class="pl-s1">  <span class="pl-smi">$request_body</span><span class="pl-k">-&gt;</span>get();</span></pre></div>
 
-<p>OR Bypass Exception</p>
+<p>OR Bypass exception</p>
 
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$request_body</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">RequestBody</span>();</span>
-<span class="pl-s1">  <span class="pl-smi">$request_body</span><span class="pl-k">-&gt;</span>get(TRUE);</span></pre></div>
+<span class="pl-s1">  <span class="pl-smi">$request_body</span><span class="pl-k">-&gt;</span>get(<span class="pl-c1">TRUE</span>);</span></pre></div>
 
 <h2>
-<a id="rhondasuccess" class="anchor" href="#rhondasuccess" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Success</h2>
+<a id="rhondasuccess" class="anchor" href="#rhondasuccess" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\Success</h2>
 
 <table>
 <thead>
@@ -162,7 +192,7 @@
 <span class="pl-s1">  <span class="pl-c1">echo</span> <span class="pl-smi">$msg</span><span class="pl-k">-&gt;</span>create();</span></pre></div>
 
 <h2>
-<a id="rhondaerror" class="anchor" href="#rhondaerror" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Error</h2>
+<a id="rhondaerror" class="anchor" href="#rhondaerror" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\Error</h2>
 
 <table>
 <thead>
@@ -200,7 +230,7 @@
 <span class="pl-s1">  }</span></pre></div>
 
 <h2>
-<a id="rhondaconfig" class="anchor" href="#rhondaconfig" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Config</h2>
+<a id="rhondaconfig" class="anchor" href="#rhondaconfig" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\Config</h2>
 
 <table>
 <thead>
@@ -242,7 +272,7 @@
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1"><span class="pl-c1">\Rhonda\</span><span class="pl-c1">Config</span><span class="pl-k">::</span>get(<span class="pl-s"><span class="pl-pds">'</span>test_one<span class="pl-pds">'</span></span>);</span></pre></div>
 
 <h2>
-<a id="rhondaapigateway" class="anchor" href="#rhondaapigateway" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\APIGateway</h2>
+<a id="rhondaapigateway" class="anchor" href="#rhondaapigateway" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\APIGateway</h2>
 
 <table>
 <thead>
@@ -272,7 +302,7 @@
 <span class="pl-s1">}</span></pre></div>
 
 <h2>
-<a id="rhondastrings" class="anchor" href="#rhondastrings" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Strings</h2>
+<a id="rhondastrings" class="anchor" href="#rhondastrings" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\Strings</h2>
 
 <table>
 <thead>
@@ -304,7 +334,7 @@
 </table>
 
 <h4>
-<a id="string-normalization" class="anchor" href="#string-normalization" aria-hidden="true"><span class="octicon octicon-link"></span></a>String Normalization</h4>
+<a id="string-normalization" class="anchor" href="#string-normalization" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>String Normalization</h4>
 
 <ul>
 <li>Removes non word characters</li>
@@ -314,7 +344,7 @@
 </ul>
 
 <h4>
-<a id="verification-types" class="anchor" href="#verification-types" aria-hidden="true"><span class="octicon octicon-link"></span></a>Validation Types</h4>
+<a id="validation-types" class="anchor" href="#validation-types" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Validation Types</h4>
 
 <table>
 <thead>
@@ -376,7 +406,7 @@
 <span class="pl-s1">  <span class="pl-c1">some_test_string</span></span></pre></div>
 
 <h2>
-<a id="rhondaheaders" class="anchor" href="#rhondaheaders" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Headers</h2>
+<a id="rhondaheaders" class="anchor" href="#rhondaheaders" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\Headers</h2>
 
 <table>
 <thead>
@@ -403,7 +433,7 @@
 <span class="pl-s1">  <span class="pl-smi">$headers</span><span class="pl-k">-&gt;</span>getallheaders();</span></pre></div>
 
 <h2>
-<a id="rhondamysql" class="anchor" href="#rhondamysql" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Mysql</h2>
+<a id="rhondamysql" class="anchor" href="#rhondamysql" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\Mysql</h2>
 
 <table>
 <thead>
@@ -418,7 +448,7 @@
 <td>Escape the thing being passed in by utilizing mysqli and real_escape_string. These methods require a mysql connection so you will need to load a config file into the variable <strong>DB</strong>. real_escape uses <strong>utf-8</strong> as the charset.  When escaping an Array or Object, recursion is used and it will drill through the object/array and escape everything.</td>
 </tr>
 <tr>
-<td>bool_to_string(<strong>String</strong>)</td>
+<td>bool_to_string(STRING)</td>
 <td>Convert ANY truthy or falsy thing into a '1' or a '0' for mysql query building</td>
 </tr>
 </tbody>
@@ -443,12 +473,15 @@
 <span class="pl-s1">);</span>
 <span class="pl-s1"><span class="pl-smi">$array</span> <span class="pl-k">=</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Mysql</span><span class="pl-k">::</span>real_escape(<span class="pl-smi">$ray</span>);</span></pre></div>
 
-<p><strong>Bool to string</strong></p>
+<p><strong>Convert to Mysql boolean</strong></p>
 
-<span class="pl-s1"><span class="pl-smi">$value</span> <span class="pl-k">=</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Mysql</span><span class="pl-k">::</span>bool_to_string(<span class="pl-smi">'true'</span>);</span></pre></div>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$value</span> <span class="pl-k">=</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Mysql</span><span class="pl-k">::</span> bool_to_string(<span class="pl-s"><span class="pl-pds">'</span>true<span class="pl-pds">'</span></span>);</span>
+<span class="pl-s1">  <span class="pl-k">OR</span></span>
+<span class="pl-s1">  <span class="pl-smi">$mysql</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Mysql</span>();</span>
+<span class="pl-s1">  <span class="pl-smi">$value</span> <span class="pl-k">=</span> <span class="pl-smi">$mysql</span><span class="pl-k">-&gt;</span>bool_to_string(<span class="pl-s"><span class="pl-pds">'</span>true<span class="pl-pds">'</span></span>);</span></pre></div>
 
 <h2>
-<a id="rhondaservicechain" class="anchor" href="#rhondaservicechain" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\ServiceChain</h2>
+<a id="rhondaservicechain" class="anchor" href="#rhondaservicechain" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\ServiceChain</h2>
 
 <table>
 <thead>
@@ -500,9 +533,8 @@ preferably immediately after the composer autoload.</p>
 <span class="pl-s1">  <span class="pl-c">// "Returns: array("service1", "service2", "etc")</span></span>
 <span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">ServiceChain</span><span class="pl-k">::</span> report(<span class="pl-c1">TRUE</span>);</span></pre></div>
 
-
 <h2>
-<a id="rhondacors" class="anchor" href="#rhondacors" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\CORS</h2>
+<a id="rhondacors" class="anchor" href="#rhondacors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\CORS</h2>
 
 <table>
 <thead>
@@ -519,9 +551,6 @@ preferably immediately after the composer autoload.</p>
 </tbody>
 </table>
 
-<p>Allow CORS requests.</p>
-<p><strong>DO NOT</strong> forget to add a <strong>OPTIONS</strong> route to your router else CORS will still deny your request</p>
-
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">CORS</span><span class="pl-k">::</span>allow_headers();</span></pre></div>
 
 <p>OR</p>
@@ -529,10 +558,8 @@ preferably immediately after the composer autoload.</p>
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$cors</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">CORS</span>();</span>
 <span class="pl-s1">  <span class="pl-smi">$cors</span><span class="pl-k">-&gt;</span>allow_headers();</span></pre></div>
 
-
-
 <h2>
-<a id="rhondaboolean" class="anchor" href="#rhondaboolean" aria-hidden="true"><span class="octicon octicon-link"></span></a>\Rhonda\Boolean</h2>
+<a id="rhondaboolean" class="anchor" href="#rhondaboolean" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\Boolean</h2>
 
 <table>
 <thead>
@@ -544,28 +571,26 @@ preferably immediately after the composer autoload.</p>
 <tbody>
 <tr>
 <td>evaluate(STRING)</td>
-<td>Evaluate string to determine Boolean TRUE or FALSE</td>
+<td>Read a string to change to a boolean TRUE/FALSE</td>
 </tr>
 </tbody>
 </table>
 
-<p>Determine Boolean</p>
-
-<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Boolean</span><span class="pl-k">::</span>evaluate('yes');</span></pre></div>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Boolean</span><span class="pl-k">::</span>evaluate(<span class="pl-s"><span class="pl-pds">'</span>yes<span class="pl-pds">'</span></span>);</span></pre></div>
 
 <p>OR</p>
 
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$boolean</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Boolean</span>();</span>
-<span class="pl-s1">  <span class="pl-smi">$boolean</span><span class="pl-k">-&gt;</span>evaluate('no');</span></pre></div>
-
-
+<span class="pl-s1">  <span class="pl-smi">$boolean</span><span class="pl-k">-&gt;</span>evaluate(<span class="pl-s"><span class="pl-pds">'</span>false<span class="pl-pds">'</span></span>);</span></pre></div>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/peledies/rhonda">Rhonda</a> is maintained by <a href="https://github.com/peledies">peledies</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
 
     </section>
 
-
+  
   </body>
 </html>
