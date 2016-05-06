@@ -48,8 +48,44 @@ OR
   $uuid->create();
 ```
 
+##\Rhonda\Request
+
+Package all incomming request data into a singleton that can be accessed by your 
+application. ALL data that goes through `packager` is automatically mysql_real_eacaped
+even array's and objects recursively.
+
+| Method  | Description |
+| ------------- | ------------- |
+| get('param')  | Get the provided query string parameter, mysql escaped  |
+| post()  | Get the provided request body, mysql escaped  |
+
+In order to use this class you need to first run the packager right after Rhonda
+is included in your project
+
+```php
+  \Rhonda\Request::packager();
+```
+
+```php
+  # GET parameters
+  $thing = \Rhonda\Request::get();
+```
+
+```php
+  # GET specific query string value
+  $thing = \Rhonda\Request::get('string');
+```
+
+```php
+  # POST body
+  $thing = \Rhonda\Request::post();
+```
+
 
 ##\Rhonda\RequestBody
+
+use \Rhonda\Request for a mysql escaped request body
+
 | Method  | Description |
 | ------------- | ------------- |
 | get(boolean)  | Get the provided request body, exception can be bypassed by putting TRUE as an argument  |
