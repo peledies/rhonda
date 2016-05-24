@@ -23,7 +23,7 @@ class ServiceChain
   public function register($name=NULL)
   {
     $headers = \Rhonda\Headers:: getallheaders();
-    $config = \Rhonda\Config:: get('system');
+    $config = @\Rhonda\Config:: get('system');
 
     if(empty($name) && !empty($config)){
       // see if service is set in the config

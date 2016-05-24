@@ -99,4 +99,29 @@ class Config {
     return $result;  
   }
 
+
+  /**
+  * Remove a configuration object from memory
+  *
+  * @param String - Configuration key to be removed
+  *
+  * @example
+  * <code>
+  *   \Rhonda\Config::unset_object('test')
+  * </code>
+  *
+  * @example
+  * <code>
+  *   $config = new \Rhonda\Config();
+  *   $config->unset_object('test');
+  * </code>
+  *
+  * @since   2016-5-23
+  * @author  Deac Karns <deac@sdicg.com> 
+  **/
+  public function unset_object($key) {
+    if(property_exists(self::$config, $key)){
+      unset(self::$config->$key);
+    }
+  }
 }
