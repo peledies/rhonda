@@ -63,4 +63,14 @@ class Request
     }
   }
 
+  function PDO_packager() {
+    if(isset($_GET)){
+      self::$get = $_GET;
+    }
+
+    $post_body = \Rhonda\RequestBody::get(TRUE);
+    if(!empty($post_body)){
+      self::$post = $post_body;
+    }
+  }
 }
