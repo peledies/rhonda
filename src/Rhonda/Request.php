@@ -41,31 +41,34 @@ class Request
 
       foreach ($dirty as $key => $value) {
         $value_object = json_decode(urldecode($dirty[$key]));
-
         $clone[$key] = (self::is_json_object($value_object))? $value_object:$value;
       }
 
       // self::log_diff($clean_GET_clone, $expanded_GET_clone);
 
-      return \Rhonda\Mysql::real_escape($clone);
+      return $clone;
   }
 
-  function packager() {
+  private function deep_escape($dirty){
+    return \Rhonda\Mysql::real_escape($dirty);
+  }
+
+  public function packager() {
     // sanitize and package GET query string
     if(isset($_GET)){
-      self::$get = self::sanitize_get_array($_GET);
+      self::$get = self::deep_escape(self::sanitize_get_array($_GET));
     }
 
     // sanitize and package POST Body string
     $post_body = \Rhonda\RequestBody::get(TRUE);
     if(!empty($post_body)){
-      self::$post = \Rhonda\Mysql::real_escape($post_body);
+      self::$post = self::deep_escape($post_body);
     }
   }
 
-  function PDO_packager() {
+  public function PDO_packager() {
     if(isset($_GET)){
-      self::$get = $_GET;
+      self::$get = self::sanitize_get_array($_GET);
     }
 
     $post_body = \Rhonda\RequestBody::get(TRUE);
