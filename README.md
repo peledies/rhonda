@@ -368,3 +368,13 @@ OR
   $boolean = new \Rhonda\Boolean();
   $boolean->evaluate('false');
 ```
+
+
+##\Rhonda\JSON
+| Method | Description |
+| ------------- | ------------- |
+| encode_numeric()  | Encode a value as json with numeric literals  |
+```php
+  $results = $model->query();
+  echo \Rhonda\JSON:: encode_numeric($results);
+```
