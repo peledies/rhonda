@@ -31,6 +31,7 @@
         <a href="#rhondaservicechain" class="btn">ServiceChain</a>
         <a href="#rhondacors" class="btn">CORS</a>
         <a href="#rhondaboolean" class="btn">Boolean</a>
+        <a href="#rhondajson" class="btn">JSON</a>
     </section>
 
     <section class="main-content">
@@ -598,6 +599,26 @@ preferably immediately after the composer autoload.</p>
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$boolean</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Boolean</span>();</span>
 <span class="pl-s1">  <span class="pl-smi">$boolean</span><span class="pl-k">-&gt;</span>evaluate(<span class="pl-s"><span class="pl-pds">'</span>false<span class="pl-pds">'</span></span>);</span></pre></div>
 
+<h2>
+<a id="rhondajson" class="anchor" href="#rhondajson" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\JSON</h2>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>encode_numeric(VALUE)</td>
+<td>Encode a value as json with numeric literals</td>
+</tr>
+</tbody>
+</table>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$results</span> <span class="pl-k">=</span> <span class="pl-smi">$model<span class="pl-k">-&gt;</span>query</span>();</span>
+<span class="pl-s1">  <span class="pl-k">echo</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">JSON</span><span class="pl-k">::</span>encode_numeric(<span class="pl-smi">$results</span>);</span></pre></div>
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/peledies/rhonda">Rhonda</a> is maintained by <a href="https://github.com/peledies">peledies</a>.</span>
 
