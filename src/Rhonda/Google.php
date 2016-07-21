@@ -16,7 +16,7 @@ class Google
   *
   * @example
   * <code>
-  * \Rhonda\GoogleSDK:: geo_code(API_KEY, $params);
+  * \Rhonda\Google:: geo_code(API_KEY, $params);
   * </code>
   *
   * @param String - Google API Key
@@ -127,7 +127,7 @@ class Google
   *
   * @example
   * <code>
-  * prepare_query_string:: prepare_query_string($params);
+  * \Rhonda\Google:: prepare_query_string($params);
   * </code>
   *
   * @return query string
