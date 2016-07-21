@@ -31,6 +31,7 @@
         <a href="#rhondaservicechain" class="btn">ServiceChain</a>
         <a href="#rhondacors" class="btn">CORS</a>
         <a href="#rhondaboolean" class="btn">Boolean</a>
+        <a href="#rhondagoogle" class="btn">Google</a>
     </section>
 
     <section class="main-content">
@@ -597,6 +598,49 @@ preferably immediately after the composer autoload.</p>
 
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$boolean</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Boolean</span>();</span>
 <span class="pl-s1">  <span class="pl-smi">$boolean</span><span class="pl-k">-&gt;</span>evaluate(<span class="pl-s"><span class="pl-pds">'</span>false<span class="pl-pds">'</span></span>);</span></pre></div>
+
+
+<h2>
+<a id="rhondagoogle" class="anchor" href="#rhondagoogle" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\Google</h2>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>geo_code(STRING, ARRAY)</td>
+<td>Load and address with Google api key and Array of address parameters</td>
+</tr>
+<tr>
+<td>prepare_query_string(ARRAY)</td>
+<td>Prepare a Google Array of address parameters</td>
+</tr>
+</tbody>
+</table>
+
+<h4><b>Get the geo code information for an address</b></h4>
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Google</span><span class="pl-k">::</span>geo_code(<span class="pl-s"><span class="pl-pds">'</span>google_api_key<span class="pl-pds">'</span>, array('1600 Amphitheatre Parkway', 'Mountain View', 'CA 94043', 'USA')</span>);</span></pre></div>
+
+<p>OR</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$google</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Google</span>();</span>
+<span class="pl-s1">  <span class="pl-smi">$google</span><span class="pl-k">-&gt;</span>geo_code(<span class="pl-s"><span class="pl-pds">'</span>google_api_key<span class="pl-pds">'</span>, array('1600 Amphitheatre Parkway', 'Mountain View', 'CA 94043', 'USA') </span>);</span></pre></div>
+
+<h4><b>Prepare an array of data for a Google Query String</b></h4>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Google</span><span class="pl-k">::</span>prepare_query_string(<span class="pl-s">array('1600 Amphitheatre Parkway', 'Mountain View', 'CA 94043', 'USA')</span>);</span></pre></div>
+
+<p>OR</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$google</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Google</span>();</span>
+<span class="pl-s1">  <span class="pl-smi">$google</span><span class="pl-k">-&gt;</span>prepare_query_string(<span class="pl-s">array('1600 Amphitheatre Parkway', 'Mountain View', 'CA 94043', 'USA') </span>);</span></pre></div>
+
+
+
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/peledies/rhonda">Rhonda</a> is maintained by <a href="https://github.com/peledies">peledies</a>.</span>
