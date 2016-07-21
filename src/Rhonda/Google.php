@@ -9,18 +9,21 @@ namespace Rhonda;
 * @since     2016-07-20
 * @author    Wesley Dekkers <wesley@sdicg.com>
 */
-class GoogleSDK
+class Google
 {
   /**
   * Load address info based on basic address data
   *
   * @example
   * <code>
-  * \Rhonda\GoogleSDK:: get_address_data(API_KEY, $params);
+  * \Rhonda\GoogleSDK:: geo_code(API_KEY, $params);
   * </code>
   *
   * @param String - Google API Key
   * @param Array  - of Parameters such as Address, city, zip
+  *
+  * @uses For error codes: https://developers.google.com/maps/documentation/geocoding/intro#StatusCodes
+  * @uses For API Key: https://developers.google.com/maps/documentation/geocoding/get-api-key#get-an-api-key
   *
   * @example
   * Return body
@@ -96,23 +99,25 @@ class GoogleSDK
   * @since   2016-07-18
   * @author  Wesley Dekkers <wesley@sdicg.com> 
   **/
-  public static function get_address_data($key=NULL, $params=NULL){
-    // Check if key is set
-    if(!$key){throw new \Exception("No API Key is set please look at https://developers.google.com/maps/documentation/geocoding/start");}
-
-    // Check if parameters are set
-    if(!$params){throw new \Exception("Error no valid parameters set");}
-
+  public static function geo_code($key=NULL, $params=NULL){
     // Make a valid query string so Google will accept this
-  	$query_string = self::prepare_query_string($params);
+    $query_string = self::prepare_query_string($params);
+
+    // Check if key is set
+    $key = ($key)? $key : \Rhonda\Config:: get('system')->google_api_key;
 
     // Load the basic url
-  	$request_url = 'https://maps.googleapis.com/maps/api/geocode/json';
+    $request_url = 'https://maps.googleapis.com/maps/api/geocode/json';
 
     // Load the paramaters + key
     $request_options = '?address='.$query_string.'&key='.$key;
 
-  	return json_decode(file_get_contents($request_url."".$request_options));
+    $result = json_decode(file_get_contents($request_url."".$request_options));
+    if($result->status != "OK"){
+      throw new \Exception("Google API Error: ".$result->status.", ".$result->error_message);
+    }
+
+    return $result;
   }
 
   /**
@@ -131,11 +136,14 @@ class GoogleSDK
   * @author  Wesley Dekkers <wesley@sdicg.com> 
   **/
   public static function prepare_query_string($params){
-  	$query_string = '';
-  	foreach ($params as $param) {
-  		$query_string .= ($query_string)? ",+".$param : $param;
-  	}
-  	return str_replace(" ","+",$query_string);
+    // Check if parameters are set
+    if(!$params){throw new \Exception("Error no valid parameters set");}
+
+    $query_string = '';
+    foreach ($params as $param) {
+      $query_string .= ($query_string)? ",+".$param : $param;
+    }
+    return str_replace(" ","+",$query_string);
   }
 }
 ?>
