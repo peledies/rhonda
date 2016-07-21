@@ -370,16 +370,16 @@ OR
 ```
 
 
-##\Rhonda\GoogleAPI
+##\Rhonda\Google
 | Method  | Description |
 | ------------- | ------------- |
 | geo_code(STRING, ARRAY)  | Load and address with Google api key and Array of address parameters |
 ```php
-  \Rhonda\GoogleAPI::geo_code('google_api_key', array('1600 Amphitheatre Parkway', 'Mountain View', 'CA 94043', 'USA'));
+  \Rhonda\Google::geo_code('google_api_key', array('1600 Amphitheatre Parkway', 'Mountain View', 'CA 94043', 'USA'));
 ```
 OR
 ```php
-  $googleApi = new \Rhonda\GoogleAPI();
+  $googleApi = new \Rhonda\Google();
   $googleApi->geo_code('google_api_key', 'array_of_address_parameters');
 ```
 
@@ -387,10 +387,10 @@ OR
 | ------------- | ------------- |
 | prepare_query_string(ARRAY)  | Prepare a Google Array of address parameters |
 ```php
-  \Rhonda\GoogleAPI::prepare_query_string(array('1600 Amphitheatre Parkway', 'Mountain View', 'CA 94043', 'USA'));
+  \Rhonda\Google::prepare_query_string(array('1600 Amphitheatre Parkway', 'Mountain View', 'CA 94043', 'USA'));
 ```
 OR
 ```php
-  $googleApi = new \Rhonda\GoogleAPI();
+  $googleApi = new \Rhonda\Google();
   $googleApi->prepare_query_string(array('1600 Amphitheatre Parkway', 'Mountain View', 'CA 94043', 'USA'));
 ```
