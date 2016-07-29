@@ -48,12 +48,14 @@ class APIGateway{
   /**
    * Makes an HTTP request to the provided URL
    *
+   * @param   Boolean - should this throw an exception? (Default = TRUE)
+   *
    * @return  String - The response returned by the service
    *
    * @since   2015-11-05
    * @author  Deac Karns <deac@sdicg.com>
    */
-  public function run(){
+  public function run($throw_exception=TRUE){
     $contents = file_get_contents($this->url, false, $this->context);
     if(!strpos($http_response_header[0], '200')){
       $contents = json_decode($contents);
@@ -62,7 +64,9 @@ class APIGateway{
       }else{
         $body = implode(" - ", $http_response_header);
       }
-      throw new \Exception($body);
+      if($throw_exception){
+        throw new \Exception($body);
+      }
     }
 
     return $contents;
