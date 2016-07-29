@@ -227,6 +227,14 @@ is included in your project</p>
 <td>Adds a <code>Warning</code> header and changes the status code to <code>299</code>
 </td>
 </tr>
+<tr>
+<td>add_summary_item(**Object**)</td>
+<td>Adds any object to the error summary singleton </td>
+</tr>
+<tr>
+<td>summary()</td>
+<td>Retrieves the error summary data **Array**</td>
+</tr>
 </tbody>
 </table>
 
@@ -299,8 +307,8 @@ is included in your project</p>
 </thead>
 <tbody>
 <tr>
-<td>run()</td>
-<td>Run a request to an external URL</td>
+<td>run(boolean)</td>
+<td>Run a request to an external URL. optional parameter for exception throw (Default=true)</td>
 </tr>
 </tbody>
 </table>
