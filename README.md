@@ -103,6 +103,19 @@ OR Bypass exception
   $request_body->get(TRUE);
 ```
 
+##\Rhonda\Response
+| Method  | Description |
+| ------------- | ------------- |
+| package(object/array/string)  | Package the data in an object with possible errors  |
+```php
+  \Rhonda\Response::package($data);
+```
+OR
+```php
+  $response_package = new \Rhonda\Response($data);
+  $response_package->package();
+```
+
 ##\Rhonda\Success
 | Method  | Description |
 | ------------- | ------------- |
