@@ -11,6 +11,8 @@ namespace Rhonda;
 */
 class Error
 {
+    static private $error_summary = [];
+
     /**
     * Format exceptions for return as an objcet and pretty formating in
     * the error log with a complete stack trace
@@ -83,5 +85,40 @@ class Error
       $alt = (!empty($alternate_route))? " Alternative Route:  $alternate_route" : "";
 
       header('Warning: 299 - "DEPRECATED API ROUTE: '.$message.$alt.'"');
+    }
+
+    /**
+    * Add an error object to the Rhonda global error array
+    *
+    * @param Object - Message
+    *
+    * @example
+    * <code>
+    *  $error = new \stdClass();
+    *  $error->code = 400;
+    *  $error->message = "some text";
+    *  \Rhonda\Error:: add_summary_item($error);
+    * </code>
+    *
+    * @since   2016-07-29
+    * @author  Deac Karns <deac@sdicg.com> 
+    **/
+    public static function add_summary_item($error) {
+      self:: $error_summary[] = $error;
+    }
+
+    /**
+    * Retrieve the global error array
+    *
+    * @example
+    * <code>
+    *  \Rhonda\Error:: summary();
+    * </code>
+    *
+    * @since   2016-07-29
+    * @author  Deac Karns <deac@sdicg.com> 
+    **/
+    public static function summary() {
+      return self:: $error_summary;
     }
 }

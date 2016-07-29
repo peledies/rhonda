@@ -122,6 +122,9 @@ OR
 | ------------- | ------------- |
 | handle()  | Fromat an exception for return. Also writes a pretty stack trace to the error log   |
 | deprecation_warning(**message, alternate route**) | Adds a `Warning` header and changes the status code to `299` |
+| add_summary_item(**Object**) | Adds any object to the error summary singleton |
+| summary() | Retrieves the error summary data **Array**|
+
 ```php
   try{
     throw new Exception("Demo Error Exception");
@@ -167,7 +170,7 @@ Retrieve a configuration object from memory
 ##\Rhonda\APIGateway
 | Method  | Description |
 | ------------- | ------------- |
-| run()  | Run a request to an external URL  |
+| run(** *optional* **)  | Run a request to an external URL. optional boolean parameter for exception bypass |
 
 
 Make a request to an external address with custom headers and a request body
