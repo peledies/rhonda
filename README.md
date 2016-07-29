@@ -368,3 +368,29 @@ OR
   $boolean = new \Rhonda\Boolean();
   $boolean->evaluate('false');
 ```
+
+
+##\Rhonda\Google
+| Method  | Description |
+| ------------- | ------------- |
+| geo_code(STRING, ARRAY)  | Load and address with Google api key and Array of address parameters |
+```php
+  \Rhonda\Google::geo_code('google_api_key', array('1600 Amphitheatre Parkway', 'Mountain View', 'CA 94043', 'USA'));
+```
+OR
+```php
+  $googleApi = new \Rhonda\Google();
+  $googleApi->geo_code('google_api_key', 'array_of_address_parameters');
+```
+
+| Method  | Description |
+| ------------- | ------------- |
+| prepare_query_string(ARRAY)  | Prepare a Google Array of address parameters |
+```php
+  \Rhonda\Google::prepare_query_string(array('1600 Amphitheatre Parkway', 'Mountain View', 'CA 94043', 'USA'));
+```
+OR
+```php
+  $googleApi = new \Rhonda\Google();
+  $googleApi->prepare_query_string(array('1600 Amphitheatre Parkway', 'Mountain View', 'CA 94043', 'USA'));
+```
