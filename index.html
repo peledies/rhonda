@@ -20,6 +20,7 @@
         <a href="#rhondaautoload" class="btn">Autoload</a>
         <a href="#rhondauuid" class="btn">UUID</a>
         <a href="#rhondarequest" class="btn">Request</a>
+        <a href="#rhondaresponse" class="btn">Response</a>
         <a href="#rhondarequestbody" class="btn">RequestBody</a>
         <a href="#rhondasuccess" class="btn">Success</a>
         <a href="#rhondaerror" class="btn">Error</a>
@@ -181,6 +182,44 @@ is included in your project</p>
 
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$request_body</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">RequestBody</span>();</span>
 <span class="pl-s1">  <span class="pl-smi">$request_body</span><span class="pl-k">-&gt;</span>get(<span class="pl-c1">TRUE</span>);</span></pre></div>
+
+
+
+
+
+
+
+
+
+<h2>
+<a id="rhondaresponse" class="anchor" href="#rhondaresponse" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\Response</h2>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>package(STRING/ARRAY/OBJECT)</td>
+<td>Package the data in an object with possible errors </td>
+</tr>
+</tbody>
+</table>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Response</span><span class="pl-k">::</span>package($data);</span></pre></div>
+
+<p>OR</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$response_package</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Response</span>();</span>
+<span class="pl-s1">  <span class="pl-smi">$response_package</span><span class="pl-k">-&gt;</span>package($data);</span></pre></div>
+
+
+
+
+
 
 <h2>
 <a id="rhondasuccess" class="anchor" href="#rhondasuccess" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\Success</h2>
