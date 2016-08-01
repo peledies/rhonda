@@ -50,10 +50,20 @@ class APIGateway{
    *
    * @param   Boolean - should this throw an exception? (Default = TRUE)
    *
-   * @return  String - The response returned by the service
+   * @return  **Object** - 
+   * Example response object
+   * <code>
+   * {
+   *  status: "http_response_header",
+   *  route: "STRING",
+   *  error: "ARRAY/OBJECT/STRING",
+   *  data: "ARRAY/OBJECT/STRING"
+   * }
+   * </code>
    *
    * @since   2015-11-05
    * @author  Deac Karns <deac@sdicg.com>
+   * @author  Wesley Dekkers <wesley@sdicg.com>
    */
   public function run($throw_exception=TRUE){
      $contents = file_get_contents($this->url, false, $this->context);
