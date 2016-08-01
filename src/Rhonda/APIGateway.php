@@ -56,7 +56,7 @@ class APIGateway{
    * {
    *  status: "http_response_header",
    *  route: "STRING",
-   *  error: "ARRAY/OBJECT/STRING",
+   *  errors: "ARRAY/OBJECT/STRING",
    *  data: "ARRAY/OBJECT/STRING"
    * }
    * </code>
@@ -71,7 +71,7 @@ class APIGateway{
     $result = new \stdClass();
     $result->status = $http_response_header[0];
     $result->route = $this->url;
-    $result->error = "";
+    $result->errors = "";
 
     if(!strpos($http_response_header[0], '200')){
       $contents = json_decode($contents);
@@ -83,7 +83,7 @@ class APIGateway{
       if($throw_exception){
         throw new \Exception($body);
       }else{
-        $result->error = $body;
+        $result->errors = $body;
         $result->success = FALSE;
       }
     }else{
