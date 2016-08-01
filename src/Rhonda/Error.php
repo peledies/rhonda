@@ -64,7 +64,10 @@ class Error
       }
       error_log($e->getMessage()."\n------\n".$e->getTraceAsString()."\n------\n");
       http_response_code($status);
-      return json_encode(array("code"=>$status, "message"=>$e->getMessage()));
+
+      self:: add_summary_item(array("code"=>$status, "message"=>$e->getMessage()));
+      
+      return json_encode(\Rhonda\Response:: package(""));
     }
 
     /**
