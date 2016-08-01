@@ -67,7 +67,7 @@ class Error
 
       self:: add_summary_item(array("code"=>$status, "message"=>$e->getMessage()));
       
-      return json_encode(\Rhonda\Response:: package(""));
+      return json_encode(\Rhonda\Response:: package("", $status));
     }
 
     /**
