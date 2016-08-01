@@ -50,13 +50,29 @@ class APIGateway{
    *
    * @param   Boolean - should this throw an exception? (Default = TRUE)
    *
-   * @return  String - The response returned by the service
+   * @return  **Object** - 
+   * Example response object
+   * <code>
+   * {
+   *  status: "http_response_header",
+   *  route: "STRING",
+   *  errors: "ARRAY/OBJECT/STRING",
+   *  data: "ARRAY/OBJECT/STRING"
+   * }
+   * </code>
    *
    * @since   2015-11-05
    * @author  Deac Karns <deac@sdicg.com>
+   * @author  Wesley Dekkers <wesley@sdicg.com>
    */
   public function run($throw_exception=TRUE){
-    $contents = file_get_contents($this->url, false, $this->context);
+     $contents = file_get_contents($this->url, false, $this->context);
+    
+    $result = new \stdClass();
+    $result->status = $http_response_header[0];
+    $result->route = $this->url;
+    $result->errors = "";
+
     if(!strpos($http_response_header[0], '200')){
       $contents = json_decode($contents);
       if(is_object($contents) && property_exists($contents, 'message')){
@@ -66,10 +82,16 @@ class APIGateway{
       }
       if($throw_exception){
         throw new \Exception($body);
+      }else{
+        $result->errors = $body;
+        $result->success = FALSE;
       }
+    }else{
+      $result->success = TRUE;
     }
-
-    return $contents;
+      $result->data = $contents;
+    
+    return $result;
   }
 
   /**
