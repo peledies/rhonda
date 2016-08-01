@@ -267,6 +267,7 @@ try{
 | Method  | Description |
 | ------------- | ------------- |
 | getallheaders()  | Return an Array of all request headers, works for Apache, PHP, and Nginx servers  |
+| set_response_code(integer)  | Set the response code and text to a specific value (accepts: 200, 209, 400, 404)  |
 
 
 Retrieve All request headers as an Array
