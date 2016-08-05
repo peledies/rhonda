@@ -28,7 +28,11 @@ class Response {
   * @return Return - **Object**
   * {
   *   "errors": ARRAY of error OBJECTS,
-  *   "data": STRING/OBJECT/ARRAY
+  *   "data": STRING/OBJECT/ARRAY,
+  *   "request": {
+  *     "url": "REQUEST URL",
+  *     "method": "POST/PUT/DELETE/GET/PATCH.. etcetera"
+  *   }
   * }
   *
   * @since   2016-07-29
@@ -39,6 +43,13 @@ class Response {
     $result = new \stdClass();
     $result->errors = \Rhonda\Error::summary();
     $result->data = $data;
+
+    $result->request = new \stdClass();
+    $result->request->url = $_SERVER['REQUEST_SCHEME']
+                            ."://"
+                            .$_SERVER['HTTP_HOST']
+                            .$_SERVER['REQUEST_URI'];
+    $result->request->method = $_SERVER['REQUEST_METHOD'];
 
     // When error not empty and data not empty change headers 206
     if(!$response_code && !empty($result->errors) && !empty($data)){

@@ -8,5 +8,3 @@ $data = "Will we have success";
 echo "<pre>";
 	print_r(\Rhonda\Response:: package($data));
 echo "</pre>";
-
-
