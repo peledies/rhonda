@@ -6,6 +6,10 @@
         {
             "name": "Deac Karns",
             "email": "deac@distributednature.com"
+        },
+        {
+            "name": "Wesley Dekkers",
+            "email": "wesley@wd-media.nl"
         }
     ],
     "minimum-stability": "dev",

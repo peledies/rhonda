@@ -66,30 +66,33 @@ class APIGateway{
    * @author  Wesley Dekkers <wesley@sdicg.com>
    */
   public function run($throw_exception=TRUE){
-     $contents = file_get_contents($this->url, false, $this->context);
+    $contents = json_decode(file_get_contents($this->url, false, $this->context));
     
     $result = new \stdClass();
     $result->status = $http_response_header[0];
     $result->route = $this->url;
     $result->errors = "";
+    $result->success = TRUE;
 
     if(!strpos($http_response_header[0], '200')){
-      $contents = json_decode($contents);
-      if(is_object($contents) && property_exists($contents, 'message')){
-        $body = $contents->message;
+      if(is_object($contents) && !empty($contents->errors)){
+        foreach ($contents->errors as $error) {
+          \Rhonda\Error:: add_summary_item($error);
+        }
       }else{
-        $body = implode(" - ", $http_response_header);
+        \Rhonda\Error:: add_summary_item(implode(" - ", $http_response_header));
       }
+
+      $result->errors = \Rhonda\Error:: summary();
+      $result->success = FALSE;
+
+      // When hard error End call here
       if($throw_exception){
-        throw new \Exception($body);
-      }else{
-        $result->errors = $body;
-        $result->success = FALSE;
+        throw new \Exception("Rhonda API Gateway detected an error");
       }
-    }else{
-      $result->success = TRUE;
     }
-      $result->data = $contents;
+      
+    $result->data = $contents->data;
     
     return $result;
   }
