@@ -53,27 +53,51 @@ class Request
     return \Rhonda\Mysql::real_escape($dirty);
   }
 
-  public function packager() {
-    // sanitize and package GET query string
-    if(isset($_GET)){
-      self::$get = self::deep_escape(self::sanitize_get_array($_GET));
-    }
+  public function packager($json=true) {
+    try{
+      if(isset($_GET['q'])){
+        json_decode($_GET['q']);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+          throw new \Exception("Malformed JSON in query string [q]: ".json_last_error_msg());
+        }
+      }
 
-    // sanitize and package POST Body string
-    $post_body = \Rhonda\RequestBody::get(TRUE);
-    if(!empty($post_body)){
-      self::$post = self::deep_escape($post_body);
+      // sanitize and package GET query string
+      if(isset($_GET)){
+        self::$get = self::deep_escape(self::sanitize_get_array($_GET));
+      }
+
+      // sanitize and package POST Body string
+      $post_body = \Rhonda\RequestBody::get(TRUE);
+      if(!empty($post_body)){
+        self::$post = self::deep_escape($post_body);
+      }
+    }catch(\Exception $e){
+      echo \Rhonda\Error:: handle($e);
+      die();
     }
   }
 
   public function PDO_packager() {
-    if(isset($_GET)){
-      self::$get = self::sanitize_get_array($_GET);
-    }
+    try{
+      if(isset($_GET['q'])){
+        json_decode($_GET['q']);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+          throw new \Exception("Malformed JSON in query string [q]: ".json_last_error_msg());
+        }
+      }
 
-    $post_body = \Rhonda\RequestBody::get(TRUE);
-    if(!empty($post_body)){
-      self::$post = $post_body;
+      if(isset($_GET)){
+        self::$get = self::sanitize_get_array($_GET);
+      }
+
+      $post_body = \Rhonda\RequestBody::get(TRUE);
+      if(!empty($post_body)){
+        self::$post = $post_body;
+      }
+    }catch(\Exception $e){
+      echo \Rhonda\Error:: handle($e);
+      die();
     }
   }
 }
