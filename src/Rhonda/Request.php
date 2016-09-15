@@ -56,7 +56,7 @@ class Request
   public function packager($json=true) {
     try{
       if(isset($_GET['q'])){
-        json_decode($_GET['q']);
+        json_decode(urldecode($_GET['q']));
         if (json_last_error() !== JSON_ERROR_NONE) {
           throw new \Exception("Malformed JSON in query string [q]: ".json_last_error_msg());
         }
@@ -81,7 +81,7 @@ class Request
   public function PDO_packager() {
     try{
       if(isset($_GET['q'])){
-        json_decode($_GET['q']);
+        json_decode(urldecode($_GET['q']));
         if (json_last_error() !== JSON_ERROR_NONE) {
           throw new \Exception("Malformed JSON in query string [q]: ".json_last_error_msg());
         }
