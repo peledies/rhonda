@@ -103,6 +103,19 @@ OR Bypass exception
   $request_body->get(TRUE);
 ```
 
+##\Rhonda\Response
+| Method  | Description |
+| ------------- | ------------- |
+| package(object/array/string)  | Package the data in an object with possible errors  |
+```php
+  \Rhonda\Response::package($data);
+```
+OR
+```php
+  $response_package = new \Rhonda\Response($data);
+  $response_package->package();
+```
+
 ##\Rhonda\Success
 | Method  | Description |
 | ------------- | ------------- |
@@ -122,6 +135,9 @@ OR
 | ------------- | ------------- |
 | handle()  | Fromat an exception for return. Also writes a pretty stack trace to the error log   |
 | deprecation_warning(**message, alternate route**) | Adds a `Warning` header and changes the status code to `299` |
+| add_summary_item(**Object**) | Adds any object to the error summary singleton |
+| summary() | Retrieves the error summary data **Array**|
+
 ```php
   try{
     throw new Exception("Demo Error Exception");
@@ -167,7 +183,7 @@ Retrieve a configuration object from memory
 ##\Rhonda\APIGateway
 | Method  | Description |
 | ------------- | ------------- |
-| run()  | Run a request to an external URL  |
+| run(** *optional* **)  | Run a request to an external URL. optional boolean parameter for exception bypass |
 
 
 Make a request to an external address with custom headers and a request body
@@ -251,6 +267,7 @@ try{
 | Method  | Description |
 | ------------- | ------------- |
 | getallheaders()  | Return an Array of all request headers, works for Apache, PHP, and Nginx servers  |
+| set_response_code(integer)  | Set the response code and text to a specific value (accepts: 200, 209, 400, 404)  |
 
 
 Retrieve All request headers as an Array
@@ -367,4 +384,30 @@ OR
 ```php
   $boolean = new \Rhonda\Boolean();
   $boolean->evaluate('false');
+```
+
+
+##\Rhonda\Google
+| Method  | Description |
+| ------------- | ------------- |
+| geo_code(STRING, ARRAY)  | Load and address with Google api key and Array of address parameters |
+```php
+  \Rhonda\Google::geo_code('google_api_key', array('1600 Amphitheatre Parkway', 'Mountain View', 'CA 94043', 'USA'));
+```
+OR
+```php
+  $googleApi = new \Rhonda\Google();
+  $googleApi->geo_code('google_api_key', 'array_of_address_parameters');
+```
+
+| Method  | Description |
+| ------------- | ------------- |
+| prepare_query_string(ARRAY)  | Prepare a Google Array of address parameters |
+```php
+  \Rhonda\Google::prepare_query_string(array('1600 Amphitheatre Parkway', 'Mountain View', 'CA 94043', 'USA'));
+```
+OR
+```php
+  $googleApi = new \Rhonda\Google();
+  $googleApi->prepare_query_string(array('1600 Amphitheatre Parkway', 'Mountain View', 'CA 94043', 'USA'));
 ```

@@ -48,24 +48,53 @@ class APIGateway{
   /**
    * Makes an HTTP request to the provided URL
    *
-   * @return  String - The response returned by the service
+   * @param   Boolean - should this throw an exception? (Default = TRUE)
+   *
+   * @return  **Object** - 
+   * Example response object
+   * <code>
+   * {
+   *  status: "http_response_header",
+   *  route: "STRING",
+   *  errors: "ARRAY/OBJECT/STRING",
+   *  data: "ARRAY/OBJECT/STRING"
+   * }
+   * </code>
    *
    * @since   2015-11-05
    * @author  Deac Karns <deac@sdicg.com>
+   * @author  Wesley Dekkers <wesley@sdicg.com>
    */
-  public function run(){
-    $contents = file_get_contents($this->url, false, $this->context);
-    if(!strpos($http_response_header[0], '200')){
-      $contents = json_decode($contents);
-      if(is_object($contents) && property_exists($contents, 'message')){
-        $body = $contents->message;
-      }else{
-        $body = implode(" - ", $http_response_header);
-      }
-      throw new \Exception($body);
-    }
+  public function run($throw_exception=TRUE){
+    $contents = json_decode(file_get_contents($this->url, false, $this->context));
+    
+    $result = new \stdClass();
+    $result->status = $http_response_header[0];
+    $result->route = $this->url;
+    $result->errors = "";
+    $result->success = TRUE;
 
-    return $contents;
+    if(!strpos($http_response_header[0], '200')){
+      if(is_object($contents) && !empty($contents->errors)){
+        foreach ($contents->errors as $error) {
+          \Rhonda\Error:: add_summary_item($error);
+        }
+      }else{
+        \Rhonda\Error:: add_summary_item(implode(" - ", $http_response_header));
+      }
+
+      $result->errors = \Rhonda\Error:: summary();
+      $result->success = FALSE;
+
+      // When hard error End call here
+      if($throw_exception){
+        throw new \Exception("Rhonda API Gateway detected an error");
+      }
+    }
+      
+    $result->data = $contents->data;
+    
+    return $result;
   }
 
   /**

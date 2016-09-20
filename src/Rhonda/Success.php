@@ -42,6 +42,6 @@ class Success
     if(empty($key)){
       $key="success";
     }
-    return json_encode(array($key => $value));
+    return array($key => $value);
   }
 }

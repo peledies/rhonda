@@ -20,4 +20,41 @@ class Headers{
     }
     return $headers;
   }
+
+  
+  /**
+  * Set response headers based on parameter
+  *
+  * @param Parameter - The response code
+  *
+  * @example
+  * <code>
+  * \Rhonda\Response:: set_header($result);
+  * </code>
+  *
+  * @since   2016-08-01
+  * @author  Deac Karns <deac@sdicg.com> 
+  * @author  Wesley Dekkers <wesley@sdicg.com> 
+  **/
+  public static function set_response_code($code){
+    switch ($code) {
+      case 400:
+        $header = "HTTP/1.1 400 Bad Request";
+        break;
+      
+      case 404:
+        $header = "HTTP/1.1 404 Not Found";
+        break;
+
+      case 209:
+        $header = "HTTP/1.1 209 Partial Success";
+        break;
+
+      default:
+        $header = "HTTP/1.1 200 Success";
+        break;
+    }
+
+    header($header);
+  }
 }
