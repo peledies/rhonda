@@ -18,6 +18,7 @@
       <a href="https://github.com/peledies/rhonda/tarball/master" class="btn">Download .tar.gz</a>
         <h2 class="project-tagline">Available Helpers</h2>
         <a href="#rhondaautoload" class="btn">Autoload</a>
+        <a href="#rhondaarrays" class="btn">Arrays</a>
         <a href="#rhondauuid" class="btn">UUID</a>
         <a href="#rhondarequest" class="btn">Request</a>
         <a href="#rhondaresponse" class="btn">Response</a>
@@ -85,6 +86,38 @@
 
 <div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$load</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Autoload</span>();</span>
 <span class="pl-s1">  <span class="pl-smi">$load</span><span class="pl-k">-&gt;</span>path(<span class="pl-c1">__DIR__</span><span class="pl-k">.</span><span class="pl-s"><span class="pl-pds">"</span>/path/to/load/<span class="pl-pds">"</span></span>);</span></pre></div>
+
+
+<h2>
+<a id="rhondaarrays" class="anchor" href="#rhondaarrays" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\Arrays</h2>
+
+<p>Handle Array verification and modification tasks</p>
+
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>empty_property_check(array)</td>
+<td>Checks if there is an empty property in an array or object</td>
+</tr>
+</tbody>
+</table>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Arrays</span><span class="pl-k">::</span>empty_property_check(<span class="pl-c1">array()</span>);</span></pre></div>
+
+<p>OR</p>
+
+<div class="highlight highlight-text-html-php"><pre><span class="pl-s1">  <span class="pl-smi">$check_array</span> <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-c1">\Rhonda\</span><span class="pl-c1">Arrays</span>();</span>
+<span class="pl-s1">  <span class="pl-smi">$check_array</span><span class="pl-k">-&gt;</span>empty_property_check(<span class="pl-c1">array()</span>);</span></pre></div>
+
+
+
+
 
 <h2>
 <a id="rhondauuid" class="anchor" href="#rhondauuid" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>\Rhonda\UUID</h2>
